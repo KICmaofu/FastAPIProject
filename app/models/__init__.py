@@ -8,7 +8,6 @@ from app.models.robot_position_history import RobotPositionHistory
 from app.models.environment_data import EnvironmentData
 from app.models.alert import Alert
 from app.models.message import Message
-from app.models.ai_prediction import AIPrediction
 from app.models.report import Report
 from app.models.system_config import SystemConfig
 from app.models.system_log import SystemLog

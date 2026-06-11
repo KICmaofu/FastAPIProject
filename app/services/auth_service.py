@@ -30,22 +30,38 @@ class AuthService:
         
         return access_token, db_user
 
-    def register(self, db: Session, username: str, phone: str, password: str) -> Optional[User]:
+    def register(self, db: Session, username: str, phone: str, password: str, role: str = "viewer", admin_key: str = None) -> Optional[User]:
         if user_crud.get_by_username(db, username):
-            return None
+            return None, "用户名已存在"
         
         if user_crud.get_by_phone(db, phone):
-            return None
+            return None, "手机号已被注册"
+        
+        # 验证角色
+        valid_roles = ["viewer", "operator", "admin"]
+        if role not in valid_roles:
+            return None, "无效的角色"
+        
+        # 如果要注册为管理员，需要提供管理员密钥
+        if role == "admin":
+            # 从系统配置获取管理员密钥
+            from app.crud import system_config as system_config_crud
+            admin_key_config = system_config_crud.get_by_key(db, "admin_registration_key")
+            expected_key = admin_key_config.value if admin_key_config else "admin-secret-key"
+            
+            if not admin_key or admin_key != expected_key:
+                return None, "注册管理员账户需要提供正确的管理员密钥"
         
         hashed_password = get_password_hash(password)
         user_data = {
             "username": username,
             "phone": phone,
             "password_hash": hashed_password,
-            "role": "viewer"
+            "role": role
         }
         
-        return user_crud.create(db, obj_in=user_data)
+        user = user_crud.create(db, obj_in=user_data)
+        return user, None
 
     def reset_password(self, db: Session, phone: str, new_password: str) -> bool:
         db_user = user_crud.get_by_phone(db, phone)

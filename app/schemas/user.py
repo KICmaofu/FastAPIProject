@@ -2,6 +2,8 @@ from pydantic import BaseModel, Field
 from typing import Optional, List
 
 class UserResponse(BaseModel):
+    model_config = {"from_attributes": True}
+    
     id: str = Field(..., description="用户ID")
     username: str = Field(..., description="用户名")
     phone: Optional[str] = Field(None, description="手机号")

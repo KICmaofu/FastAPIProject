@@ -6,6 +6,8 @@ from app.config.database import get_db
 from app.models.user import User
 from app.models.system_log import SystemLog
 from app.utils.security import verify_password
+from app.schemas.common import PasswordVerifyRequest
+from app.dependencies.auth import get_current_active_user
 
 MAX_VERIFY_ATTEMPTS = 5
 LOCKOUT_DURATION_MINUTES = 15
@@ -141,15 +143,30 @@ class PasswordVerified:
     pass
 
 async def require_password_verified(
-    password: str,
-    operation: str,
-    request: Request = None,
+    request: Request,
     db: Session = Depends(get_db),
-    current_user: User = Depends(lambda: None)
+    current_user: User = Depends(get_current_active_user)
 ) -> PasswordVerified:
-    from app.dependencies.auth import get_current_active_user
+    """
+    密码验证依赖项
     
-    user = await get_current_active_user()
+    用于保护敏感操作（如创建设备、更新设备、删除设备），
+    要求用户输入密码进行二次验证。
+    
+    参数:
+        password: 用户密码（从请求体中提取）
+    
+    异常:
+        HTTPException: 密码验证失败时抛出
+    """
+    # 从请求体中获取密码
+    body = await request.body()
+    try:
+        import json
+        data = json.loads(body)
+        password = data.get('password')
+    except:
+        password = None
     
     if not password:
         raise HTTPException(
@@ -157,6 +174,6 @@ async def require_password_verified(
             detail="密码不能为空"
         )
     
-    verify_user_password(db, user, password, operation, request)
+    verify_user_password(db, current_user, password, "敏感操作验证", request)
     
     return PasswordVerified()

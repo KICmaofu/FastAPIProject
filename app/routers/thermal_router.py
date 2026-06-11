@@ -55,5 +55,17 @@ async def get_thermal_history(
     except ValueError:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="时间格式错误")
 
-    data = thermal_data_crud.get_multi_by_time_range(db, start, end, skip=(page-1)*size, limit=size)
-    return success_response(data=data)
+    thermal_data = thermal_data_crud.get_multi_by_time_range(db, start, end, skip=(page-1)*size, limit=size)
+    
+    # 转换为字典列表
+    result = []
+    for item in thermal_data:
+        result.append({
+            "id": item.id,
+            "sensor_data_id": item.sensor_data_id,
+            "max_temp_matrix": item.max_temp_matrix,
+            "max_temp_value": float(item.max_temp_value) if item.max_temp_value else 0,
+            "create_time": item.create_time.isoformat() if item.create_time else None
+        })
+    
+    return success_response(data=result)

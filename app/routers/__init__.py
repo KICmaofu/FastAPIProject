@@ -8,7 +8,6 @@ from app.routers.sensor_router import router as sensor_router
 from app.routers.message_router import router as message_router
 from app.routers.user_router import router as user_router
 from app.routers.system_router import router as system_router
-from app.routers.ai_router import router as ai_router
 from app.routers.report_router import router as report_router
 
 routers = [
@@ -22,6 +21,5 @@ routers = [
     message_router,
     user_router,
     system_router,
-    ai_router,
     report_router
 ]

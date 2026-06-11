@@ -16,3 +16,7 @@ class ApiResponse(BaseModel):
                 "timestamp": 1699999999999
             }
         }
+
+class PasswordVerifyRequest(BaseModel):
+    """密码验证请求模型"""
+    password: str = Field(..., min_length=1, description="用户密码")

@@ -41,7 +41,7 @@ async def get_current_user_info(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user)
 ):
-    return success_response(data=UserResponse.from_orm(current_user))
+    return success_response(data=UserResponse.model_validate(current_user))
 
 @router.put("/{userId}", summary="更新用户信息")
 async def update_user(

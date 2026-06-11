@@ -6,14 +6,18 @@ class DeviceCreate(BaseModel):
     type: str = Field(..., description="设备类型")
     model: Optional[str] = Field(None, description="型号")
     location: Optional[str] = Field(None, description="位置描述")
+    password: Optional[str] = Field(None, description="用户密码（用于验证身份）")
 
 class DeviceUpdate(BaseModel):
     name: Optional[str] = Field(None, description="设备名称")
     type: Optional[str] = Field(None, description="设备类型")
     model: Optional[str] = Field(None, description="型号")
     location: Optional[str] = Field(None, description="位置描述")
+    password: Optional[str] = Field(None, description="用户密码（用于验证身份）")
 
 class DeviceResponse(BaseModel):
+    model_config = {"from_attributes": True}
+    
     id: str = Field(..., description="设备ID")
     name: str = Field(..., description="设备名称")
     type: str = Field(..., description="设备类型")

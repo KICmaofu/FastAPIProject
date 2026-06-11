@@ -23,6 +23,8 @@ class RegisterRequest(BaseModel):
     phone: str = Field(..., description="手机号")
     password: str = Field(..., description="密码")
     confirmPassword: str = Field(..., description="确认密码")
+    role: Optional[str] = Field("viewer", description="角色 (viewer/operator/admin)，注册为管理员需要提供管理员密钥")
+    adminKey: Optional[str] = Field(None, description="管理员密钥（注册管理员账户时必填）")
 
 class ResetPasswordRequest(BaseModel):
     phone: str = Field(..., description="手机号")

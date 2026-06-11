@@ -12,6 +12,48 @@ class SensorService:
     def get_sensor_by_id(self, db: Session, sensor_id: str) -> Optional[Sensor]:
         return sensor_crud.get(db, sensor_id)
 
+    def get_latest_temperature(self, db: Session) -> Dict:
+        latest_data = sensor_data_crud.get_latest_all(db)
+        
+        if not latest_data:
+            return {"value": 0, "unit": "°C", "updateTime": datetime.now().isoformat()}
+        
+        avg_temp = sum(d.temperature for d in latest_data) / len(latest_data)
+        
+        return {
+            "value": round(avg_temp, 2),
+            "unit": "°C",
+            "updateTime": datetime.now().isoformat()
+        }
+
+    def get_latest_humidity(self, db: Session) -> Dict:
+        latest_data = sensor_data_crud.get_latest_all(db)
+        
+        if not latest_data:
+            return {"value": 0, "unit": "%", "updateTime": datetime.now().isoformat()}
+        
+        avg_humidity = sum(d.humidity for d in latest_data) / len(latest_data)
+        
+        return {
+            "value": round(avg_humidity, 2),
+            "unit": "%",
+            "updateTime": datetime.now().isoformat()
+        }
+
+    def get_latest_gas(self, db: Session) -> Dict:
+        latest_data = sensor_data_crud.get_latest_all(db)
+        
+        if not latest_data:
+            return {"value": 0, "unit": "ppm", "updateTime": datetime.now().isoformat()}
+        
+        max_gas = max(d.smoke_level for d in latest_data)
+        
+        return {
+            "value": round(max_gas, 2),
+            "unit": "ppm",
+            "updateTime": datetime.now().isoformat()
+        }
+
     def get_latest_environment_data(self, db: Session) -> EnvironmentDataResponse:
         latest_data = sensor_data_crud.get_latest_all(db)
         
@@ -33,7 +75,7 @@ class SensorService:
         )
 
     def get_environment_history(self, db: Session, start_time: str, end_time: str, interval: str = "1m") -> List[Dict]:
-        from datetime import datetime as dt
+        from datetime import datetime as dt, timedelta
         start = dt.fromisoformat(start_time)
         end = dt.fromisoformat(end_time)
         
@@ -44,7 +86,7 @@ class SensorService:
         interval_minutes = {"1m": 1, "5m": 5, "15m": 15, "1h": 60}[interval]
         
         while current_interval < end:
-            next_interval = current_interval + dt.timedelta(minutes=interval_minutes)
+            next_interval = current_interval + timedelta(minutes=interval_minutes)
             interval_data = [d for d in data if current_interval <= d.receive_time < next_interval]
             
             if interval_data:

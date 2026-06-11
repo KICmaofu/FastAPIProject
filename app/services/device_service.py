@@ -38,14 +38,14 @@ class DeviceService:
         return device_crud.get(db, device_id)
 
     def create_device(self, db: Session, data: DeviceCreate) -> Device:
-        device_data = data.dict()
+        device_data = data.model_dump(exclude={'password'})
         return device_crud.create(db, obj_in=device_data)
 
     def update_device(self, db: Session, device_id: str, data: DeviceUpdate) -> Optional[Device]:
         device = device_crud.get(db, device_id)
         if not device:
             return None
-        update_data = data.dict(exclude_unset=True)
+        update_data = data.model_dump(exclude={'password'}, exclude_unset=True)
         return device_crud.update(db, db_obj=device, obj_in=update_data)
 
     def delete_device(self, db: Session, device_id: str) -> bool:

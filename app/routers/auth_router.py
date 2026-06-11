@@ -32,12 +32,19 @@ async def register(request: RegisterRequest, db: Session = Depends(get_db)):
     if request.password != request.confirmPassword:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="两次输入的密码不一致")
     
-    user = auth_service.register(db, request.username, request.phone, request.password)
+    user, error = auth_service.register(
+        db, 
+        request.username, 
+        request.phone, 
+        request.password,
+        request.role or "viewer",
+        request.adminKey
+    )
     
     if not user:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="用户已存在")
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=error)
     
-    return success_response(data={"id": user.id, "username": user.username}, message="注册成功")
+    return success_response(data={"id": user.id, "username": user.username, "role": user.role}, message="注册成功")
 
 @router.post("/reset-password", summary="密码重置")
 async def reset_password(request: ResetPasswordRequest, db: Session = Depends(get_db)):

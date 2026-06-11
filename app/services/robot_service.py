@@ -16,8 +16,21 @@ class RobotService:
             robots = robot_crud.get_multi_active(db, skip=skip, limit=size)
             total = robot_crud.count(db)
         
+        # 转换为字典列表
+        robot_list = []
+        for robot in robots:
+            robot_list.append({
+                "id": robot.id,
+                "name": robot.name,
+                "model": robot.model,
+                "battery": float(robot.battery) if robot.battery else 0,
+                "status": robot.status,
+                "location": robot.location,
+                "speed": float(robot.speed) if robot.speed else 0.0
+            })
+        
         return {
-            "list": robots,
+            "list": robot_list,
             "total": total,
             "page": page
         }
