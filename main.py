@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from app.routers import routers
 from app.config.settings import settings
 from app.config.database import engine, Base
@@ -22,6 +23,9 @@ app.add_middleware(
     allow_methods=settings.CORS_ALLOW_METHODS,
     allow_headers=settings.CORS_ALLOW_HEADERS,
 )
+
+# 挂载静态文件服务
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 for router in routers:
     app.include_router(router)

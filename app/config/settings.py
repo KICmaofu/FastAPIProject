@@ -27,10 +27,11 @@ class Settings(BaseSettings):
     CORS_ALLOW_METHODS: list = ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"]
     CORS_ALLOW_HEADERS: list = ["*"]
     
-    # Ollama配置
-    OLLAMA_HOST: str = "http://localhost:11434"
-    OLLAMA_MODEL: str = "deepseek-r1:latest"
-    OLLAMA_TIMEOUT: int = 120
+    # DeepSeek API配置
+    DEEPSEEK_API_KEY: str = "sk-e33da26bb21f493fbf4330983d04fc78"
+    DEEPSEEK_API_URL: str = "https://api.deepseek.com/v1"
+    DEEPSEEK_MODEL: str = "deepseek-chat"
+    DEEPSEEK_TIMEOUT: int = 60
     
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

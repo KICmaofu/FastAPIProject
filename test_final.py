@@ -67,7 +67,7 @@ def main():
         ("10.2 获取系统日志", "GET", "/api/system/logs", None),
 
         # AI模块
-        ("11.1 环境数据预测", "POST", "/api/ai/predict/environment", {"hours": 24}),
+        ("11.1 环境数据预测", "POST", "/api/ai/predict/environment", {"current_temp": 25.5, "current_humidity": 60.0, "hours": 24}),
 
         # 报告模块
         ("12.1 获取报告列表", "GET", "/api/reports", None),

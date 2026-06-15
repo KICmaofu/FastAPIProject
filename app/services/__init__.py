@@ -6,8 +6,9 @@ from app.services.alert_service import AlertService
 from app.services.message_service import MessageService
 from app.services.user_service import UserService
 from app.services.system_service import SystemService
-from app.services.ai_service import AIService
+from app.services.deepseek_service import DeepSeekService
 from app.services.report_service import ReportService
+from app.services.agent_service import AgentService
 
 auth_service = AuthService()
 robot_service = RobotService()
@@ -17,5 +18,6 @@ alert_service = AlertService()
 message_service = MessageService()
 user_service = UserService()
 system_service = SystemService()
-ai_service = AIService()
+deepseek_service = DeepSeekService()
 report_service = ReportService()
+agent_service = AgentService()
