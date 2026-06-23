@@ -9,8 +9,6 @@ from app.routers.message_router import router as message_router
 from app.routers.user_router import router as user_router
 from app.routers.system_router import router as system_router
 from app.routers.report_router import router as report_router
-from app.routers.deepseek_router import router as deepseek_router
-from app.routers.agent_router import router as agent_router
 
 routers = [
     auth_router,
@@ -23,7 +21,5 @@ routers = [
     message_router,
     user_router,
     system_router,
-    report_router,
-    deepseek_router,
-    agent_router
+    report_router
 ]

@@ -5,6 +5,7 @@ import gzip
 import time
 import os
 from datetime import datetime
+from collections import deque
 from dotenv import load_dotenv
 import sys
 import traceback
@@ -58,7 +59,7 @@ performance_metrics = {
     'total_data_received': 0,
     'total_data_sent': 0,
     'avg_response_time': 0,
-    'response_times': [],
+    'response_times': deque(maxlen=100),  # 使用deque自动限制大小
     'start_time': time.time()
 }
 
@@ -127,9 +128,6 @@ def record_performance_metrics(start_time, success, data_received, data_sent):
     performance_metrics['total_data_received'] += data_received
     performance_metrics['total_data_sent'] += data_sent
     performance_metrics['response_times'].append(response_time)
-    
-    if len(performance_metrics['response_times']) > 100:
-        performance_metrics['response_times'].pop(0)
     
     if success:
         performance_metrics['successful_requests'] += 1

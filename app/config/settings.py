@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     DB_NAME: str = "inspection_system"
     
     # JWT配置
-    JWT_SECRET_KEY: str = "your-secret-key-here-change-in-production"
+    JWT_SECRET_KEY: str = ""  # 必须设置，禁止在生产环境使用默认值
     JWT_ALGORITHM: str = "HS256"
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
@@ -26,12 +26,6 @@ class Settings(BaseSettings):
     CORS_ALLOW_CREDENTIALS: bool = True
     CORS_ALLOW_METHODS: list = ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"]
     CORS_ALLOW_HEADERS: list = ["*"]
-    
-    # DeepSeek API配置
-    DEEPSEEK_API_KEY: str = "sk-e33da26bb21f493fbf4330983d04fc78"
-    DEEPSEEK_API_URL: str = "https://api.deepseek.com/v1"
-    DEEPSEEK_MODEL: str = "deepseek-chat"
-    DEEPSEEK_TIMEOUT: int = 60
     
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

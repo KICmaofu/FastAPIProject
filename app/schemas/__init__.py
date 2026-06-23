@@ -8,5 +8,4 @@ from app.schemas.sensor import SensorResponse
 from app.schemas.message import MessageResponse, MessageListRequest
 from app.schemas.user import UserResponse, UserCreate, UserUpdate, UserListRequest
 from app.schemas.system import SystemStatusResponse, SystemLogRequest, SystemConfigUpdate
-from app.schemas.deepseek import *
 from app.schemas.report import ReportResponse, ReportCreate, ReportListRequest

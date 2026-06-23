@@ -1,12 +1,16 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import JSONResponse
 from app.routers import routers
 from app.config.settings import settings
 from app.config.database import engine, Base
 import threading
 import time
 import socket
+import logging
+
+logger = logging.getLogger("inspection_system")
 
 Base.metadata.create_all(bind=engine)
 
@@ -23,6 +27,30 @@ app.add_middleware(
     allow_methods=settings.CORS_ALLOW_METHODS,
     allow_headers=settings.CORS_ALLOW_HEADERS,
 )
+
+# 全局异常处理器
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    logger.error(f"Unhandled exception: {exc}", exc_info=True)
+    return JSONResponse(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        content={
+            "code": 500,
+            "message": "服务器内部错误",
+            "data": None
+        }
+    )
+
+@app.exception_handler(ValueError)
+async def value_error_handler(request: Request, exc: ValueError):
+    return JSONResponse(
+        status_code=status.HTTP_400_BAD_REQUEST,
+        content={
+            "code": 400,
+            "message": str(exc),
+            "data": None
+        }
+    )
 
 # 挂载静态文件服务
 app.mount("/static", StaticFiles(directory="static"), name="static")
