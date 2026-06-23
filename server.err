@@ -1,0 +1,40 @@
+D:\code\FastAPIProject\app\routers\environment_router.py:25: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+  interval: str = Query("1m", regex="^(1m|5m|15m|1h)$"),
+D:\code\FastAPIProject\app\routers\alert_router.py:15: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+  level: Optional[str] = Query(None, regex="^(warning|danger)$"),
+D:\code\FastAPIProject\app\routers\alert_router.py:16: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+  status: Optional[str] = Query(None, regex="^(pending|processed)$"),
+D:\code\FastAPIProject\app\routers\system_router.py:23: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+  level: Optional[str] = Query(None, regex="^(info|warn|error)$"),
+D:\code\FastAPIProject\app\routers\report_router.py:15: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+  type: Optional[str] = Query(None, regex="^(daily|weekly|monthly)$"),
+D:\code\FastAPIProject\main.py:49: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+D:\code\FastAPIProject\main.py:60: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['D:\\code\\FastAPIProject']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [16936] using WatchFiles
+D:\code\FastAPIProject\app\routers\environment_router.py:25: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+  interval: str = Query("1m", regex="^(1m|5m|15m|1h)$"),
+D:\code\FastAPIProject\app\routers\alert_router.py:15: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+  level: Optional[str] = Query(None, regex="^(warning|danger)$"),
+D:\code\FastAPIProject\app\routers\alert_router.py:16: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+  status: Optional[str] = Query(None, regex="^(pending|processed)$"),
+D:\code\FastAPIProject\app\routers\system_router.py:23: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+  level: Optional[str] = Query(None, regex="^(info|warn|error)$"),
+D:\code\FastAPIProject\app\routers\report_router.py:15: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+  type: Optional[str] = Query(None, regex="^(daily|weekly|monthly)$"),
+INFO:     Started server process [20060]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

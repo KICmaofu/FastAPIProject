@@ -1,0 +1,435 @@
+﻿python : D:\code\FastAPIProject\app\routers\environment_ro
+uter.py:25: FastAPIDeprecationWarning: `regex` has been de
+precated, please use `pattern` instead
+所在位置 行:1 字符: 5
++ & { python main.py 2>&1 | Out-File -FilePath server_outp
+ut.txt -Encod ...
++     ~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (D:\code\Fast 
+   API...attern` instead:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  interval: str = Query("1m", regex="^(1m|5m|15m|1h)$"),
+D:\code\FastAPIProject\app\routers\alert_router.py:15: Fas
+tAPIDeprecationWarning: `regex` has been deprecated, pleas
+e use `pattern` instead
+  level: Optional[str] = Query(None, regex="^(warning|dang
+er)$"),
+D:\code\FastAPIProject\app\routers\alert_router.py:16: Fas
+tAPIDeprecationWarning: `regex` has been deprecated, pleas
+e use `pattern` instead
+  status: Optional[str] = Query(None, regex="^(pending|pro
+cessed)$"),
+D:\code\FastAPIProject\app\routers\system_router.py:23: Fa
+stAPIDeprecationWarning: `regex` has been deprecated, plea
+se use `pattern` instead
+  level: Optional[str] = Query(None, regex="^(info|warn|er
+ror)$"),
+D:\code\FastAPIProject\app\routers\report_router.py:15: Fa
+stAPIDeprecationWarning: `regex` has been deprecated, plea
+se use `pattern` instead
+  type: Optional[str] = Query(None, regex="^(daily|weekly|
+monthly)$"),
+2026-06-23 22:44:55,354 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2026-06-23 22:44:55,354 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,355 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2026-06-23 22:44:55,355 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,356 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2026-06-23 22:44:55,356 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,357 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-06-23 22:44:55,357 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_user`
+2026-06-23 22:44:55,357 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,360 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_device`
+2026-06-23 22:44:55,360 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,361 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot`
+2026-06-23 22:44:55,361 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,362 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor`
+2026-06-23 22:44:55,362 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,363 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor_data`
+2026-06-23 22:44:55,364 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,365 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_thermal_data`
+2026-06-23 22:44:55,365 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,366 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot_position_history`
+2026-06-23 22:44:55,366 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,367 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_environment_data`
+2026-06-23 22:44:55,367 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,368 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_alert`
+2026-06-23 22:44:55,368 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,369 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_message`
+2026-06-23 22:44:55,369 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,369 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_report`
+2026-06-23 22:44:55,370 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,370 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_config`
+2026-06-23 22:44:55,370 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,371 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_log`
+2026-06-23 22:44:55,371 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,373 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_user (
+	id VARCHAR(32) NOT NULL, 
+	username VARCHAR(50) NOT NULL, 
+	phone VARCHAR(20), 
+	password_hash VARCHAR(255) NOT NULL, 
+	`role` ENUM('admin','operator','viewer') NOT NULL, 
+	status BOOL NOT NULL, 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	update_time DATETIME, 
+	is_deleted BOOL NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (username), 
+	UNIQUE (phone)
+)
+
+
+2026-06-23 22:44:55,373 INFO sqlalchemy.engine.Engine [no key 0.00016s] {}
+2026-06-23 22:44:55,414 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_device (
+	id VARCHAR(32) NOT NULL, 
+	name VARCHAR(100) NOT NULL, 
+	type ENUM('robot','sensor','gateway','other') NOT NULL, 
+	model VARCHAR(50), 
+	status ENUM('online','offline','warning') NOT NULL, 
+	location VARCHAR(200), 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	update_time DATETIME, 
+	is_deleted BOOL NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+2026-06-23 22:44:55,414 INFO sqlalchemy.engine.Engine [no key 0.00014s] {}
+2026-06-23 22:44:55,430 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_robot (
+	id VARCHAR(32) NOT NULL, 
+	name VARCHAR(100) NOT NULL, 
+	model VARCHAR(50) NOT NULL, 
+	battery DECIMAL(5, 1) NOT NULL, 
+	status ENUM('idle','moving','charging','offline') NOT NULL, 
+	location VARCHAR(200), 
+	speed DECIMAL(5, 2), 
+	last_online_time DATETIME, 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	update_time DATETIME, 
+	is_deleted BOOL NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+2026-06-23 22:44:55,430 INFO sqlalchemy.engine.Engine [no key 0.00015s] {}
+2026-06-23 22:44:55,448 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_environment_data (
+	id INTEGER NOT NULL AUTO_INCREMENT, 
+	record_time DATETIME NOT NULL, 
+	temperature DECIMAL(5, 2), 
+	humidity DECIMAL(5, 2), 
+	gas DECIMAL(5, 2), 
+	pm25 DECIMAL(5, 2), 
+	max_thermal_temp DECIMAL(6, 2), 
+	data_interval VARCHAR(10) NOT NULL, 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	PRIMARY KEY (id)
+)
+
+
+2026-06-23 22:44:55,448 INFO sqlalchemy.engine.Engine [no key 0.00015s] {}
+2026-06-23 22:44:55,462 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_system_config (
+	id VARCHAR(32) NOT NULL, 
+	config_key VARCHAR(100) NOT NULL, 
+	config_value TEXT, 
+	description VARCHAR(500), 
+	update_time DATETIME, 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	PRIMARY KEY (id), 
+	UNIQUE (config_key)
+)
+
+
+2026-06-23 22:44:55,463 INFO sqlalchemy.engine.Engine [no key 0.00015s] {}
+2026-06-23 22:44:55,485 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_sensor (
+	id VARCHAR(32) NOT NULL, 
+	name VARCHAR(100) NOT NULL, 
+	type ENUM('temperature','humidity','gas','pm25','thermal') NOT NULL, 
+	unit VARCHAR(20) NOT NULL, 
+	status ENUM('normal','warning','danger') NOT NULL, 
+	device_id VARCHAR(32), 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	update_time DATETIME, 
+	is_deleted BOOL NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(device_id) REFERENCES t_device (id)
+)
+
+
+2026-06-23 22:44:55,485 INFO sqlalchemy.engine.Engine [no key 0.00017s] {}
+2026-06-23 22:44:55,517 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_sensor_data (
+	id INTEGER NOT NULL AUTO_INCREMENT, 
+	robot_id VARCHAR(32) NOT NULL, 
+	temperature DECIMAL(5, 2) NOT NULL, 
+	humidity DECIMAL(5, 2) NOT NULL, 
+	smoke_level DECIMAL(5, 2) NOT NULL, 
+	battery DECIMAL(5, 1), 
+	human_detected BOOL NOT NULL, 
+	fire_risk INTEGER NOT NULL, 
+	env_status VARCHAR(50), 
+	raw_json JSON, 
+	receive_time DATETIME NOT NULL, 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(robot_id) REFERENCES t_robot (id)
+)
+
+
+2026-06-23 22:44:55,518 INFO sqlalchemy.engine.Engine [no key 0.00014s] {}
+2026-06-23 22:44:55,554 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_robot_position_history (
+	id INTEGER NOT NULL AUTO_INCREMENT, 
+	robot_id VARCHAR(32) NOT NULL, 
+	x DECIMAL(10, 2) NOT NULL, 
+	y DECIMAL(10, 2) NOT NULL, 
+	battery DECIMAL(5, 1), 
+	speed DECIMAL(5, 2), 
+	record_time DATETIME NOT NULL, 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(robot_id) REFERENCES t_robot (id)
+)
+
+
+2026-06-23 22:44:55,554 INFO sqlalchemy.engine.Engine [no key 0.00014s] {}
+2026-06-23 22:44:55,579 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_message (
+	id VARCHAR(32) NOT NULL, 
+	title VARCHAR(200) NOT NULL, 
+	content TEXT, 
+	type VARCHAR(50), 
+	receiver_id VARCHAR(32) NOT NULL, 
+	is_read BOOL NOT NULL, 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	update_time DATETIME, 
+	is_deleted BOOL NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(receiver_id) REFERENCES t_user (id)
+)
+
+
+2026-06-23 22:44:55,579 INFO sqlalchemy.engine.Engine [no key 0.00014s] {}
+2026-06-23 22:44:55,610 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_report (
+	id VARCHAR(32) NOT NULL, 
+	type ENUM('daily','weekly','monthly') NOT NULL, 
+	title VARCHAR(200) NOT NULL, 
+	content TEXT, 
+	start_time DATETIME NOT NULL, 
+	end_time DATETIME NOT NULL, 
+	creator_id VARCHAR(32) NOT NULL, 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	update_time DATETIME, 
+	is_deleted BOOL NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(creator_id) REFERENCES t_user (id)
+)
+
+
+2026-06-23 22:44:55,610 INFO sqlalchemy.engine.Engine [no key 0.00019s] {}
+2026-06-23 22:44:55,636 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_system_log (
+	id INTEGER NOT NULL AUTO_INCREMENT, 
+	level ENUM('info','warn','error') NOT NULL, 
+	module VARCHAR(50), 
+	content TEXT, 
+	user_id VARCHAR(32), 
+	ip_address VARCHAR(50), 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES t_user (id)
+)
+
+
+2026-06-23 22:44:55,637 INFO sqlalchemy.engine.Engine [no key 0.00016s] {}
+2026-06-23 22:44:55,669 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_thermal_data (
+	id INTEGER NOT NULL AUTO_INCREMENT, 
+	sensor_data_id INTEGER NOT NULL, 
+	max_temp_matrix JSON NOT NULL, 
+	max_temp_value DECIMAL(6, 2), 
+	min_temp_value DECIMAL(6, 2), 
+	avg_temp_value DECIMAL(6, 2), 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	PRIMARY KEY (id), 
+	UNIQUE (sensor_data_id), 
+	FOREIGN KEY(sensor_data_id) REFERENCES t_sensor_data (id)
+)
+
+
+2026-06-23 22:44:55,669 INFO sqlalchemy.engine.Engine [no key 0.00015s] {}
+2026-06-23 22:44:55,701 INFO sqlalchemy.engine.Engine 
+CREATE TABLE t_alert (
+	id VARCHAR(32) NOT NULL, 
+	type VARCHAR(50) NOT NULL, 
+	level ENUM('warning','danger','critical') NOT NULL, 
+	message VARCHAR(500) NOT NULL, 
+	device_id VARCHAR(32), 
+	robot_id VARCHAR(32), 
+	sensor_data_id INTEGER, 
+	status ENUM('pending','confirmed','ignored') NOT NULL, 
+	process_remark VARCHAR(500), 
+	process_user_id VARCHAR(32), 
+	process_time DATETIME, 
+	create_time DATETIME NOT NULL DEFAULT (now()), 
+	update_time DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(device_id) REFERENCES t_device (id), 
+	FOREIGN KEY(robot_id) REFERENCES t_robot (id), 
+	FOREIGN KEY(sensor_data_id) REFERENCES t_sensor_data (id), 
+	FOREIGN KEY(process_user_id) REFERENCES t_user (id)
+)
+
+
+2026-06-23 22:44:55,701 INFO sqlalchemy.engine.Engine [no key 0.00015s] {}
+2026-06-23 22:44:55,748 INFO sqlalchemy.engine.Engine COMMIT
+D:\code\FastAPIProject\main.py:49: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handler
+s instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi
+.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+D:\code\FastAPIProject\main.py:60: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handler
+s instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi
+.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+================================================
+Starting 智能巡检系统 v1.0.0
+================================================
+INFO:     Will watch for changes in these directories: ['D
+:\\code\\FastAPIProject']
+2026-06-23 22:44:55,809 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-06-23 22:44:55,809 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_user`
+2026-06-23 22:44:55,809 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,812 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_device`
+2026-06-23 22:44:55,812 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,814 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot`
+2026-06-23 22:44:55,814 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,817 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor`
+2026-06-23 22:44:55,817 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,819 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor_data`
+2026-06-23 22:44:55,819 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,821 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_thermal_data`
+2026-06-23 22:44:55,822 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,823 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot_position_history`
+2026-06-23 22:44:55,823 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,826 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_environment_data`
+2026-06-23 22:44:55,826 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,828 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_alert`
+2026-06-23 22:44:55,828 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,830 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_message`
+2026-06-23 22:44:55,830 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,832 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_report`
+2026-06-23 22:44:55,832 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,834 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_config`
+2026-06-23 22:44:55,834 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,836 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_log`
+2026-06-23 22:44:55,836 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:44:55,838 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CT
+RL+C to quit)
+INFO:     Started reloader process [20004] using WatchFile
+s
+D:\code\FastAPIProject\app\routers\environment_router.py:2
+5: FastAPIDeprecationWarning: `regex` has been deprecated,
+ please use `pattern` instead
+  interval: str = Query("1m", regex="^(1m|5m|15m|1h)$"),
+D:\code\FastAPIProject\app\routers\alert_router.py:15: Fas
+tAPIDeprecationWarning: `regex` has been deprecated, pleas
+e use `pattern` instead
+  level: Optional[str] = Query(None, regex="^(warning|dang
+er)$"),
+D:\code\FastAPIProject\app\routers\alert_router.py:16: Fas
+tAPIDeprecationWarning: `regex` has been deprecated, pleas
+e use `pattern` instead
+  status: Optional[str] = Query(None, regex="^(pending|pro
+cessed)$"),
+D:\code\FastAPIProject\app\routers\system_router.py:23: Fa
+stAPIDeprecationWarning: `regex` has been deprecated, plea
+se use `pattern` instead
+  level: Optional[str] = Query(None, regex="^(info|warn|er
+ror)$"),
+D:\code\FastAPIProject\app\routers\report_router.py:15: Fa
+stAPIDeprecationWarning: `regex` has been deprecated, plea
+se use `pattern` instead
+  type: Optional[str] = Query(None, regex="^(daily|weekly|
+monthly)$"),
+2026-06-23 22:45:00,644 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2026-06-23 22:45:00,644 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,645 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2026-06-23 22:45:00,645 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,646 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2026-06-23 22:45:00,646 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,647 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-06-23 22:45:00,647 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_user`
+2026-06-23 22:45:00,647 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,649 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_device`
+2026-06-23 22:45:00,649 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,650 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot`
+2026-06-23 22:45:00,650 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,652 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor`
+2026-06-23 22:45:00,652 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,654 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor_data`
+2026-06-23 22:45:00,654 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,656 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_thermal_data`
+2026-06-23 22:45:00,656 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,658 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot_position_history`
+2026-06-23 22:45:00,658 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,659 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_environment_data`
+2026-06-23 22:45:00,659 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,661 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_alert`
+2026-06-23 22:45:00,661 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,663 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_message`
+2026-06-23 22:45:00,663 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,666 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_report`
+2026-06-23 22:45:00,666 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,667 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_config`
+2026-06-23 22:45:00,667 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,669 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_log`
+2026-06-23 22:45:00,669 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,671 INFO sqlalchemy.engine.Engine COMMIT
+2026-06-23 22:45:00,778 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-06-23 22:45:00,778 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_user`
+2026-06-23 22:45:00,778 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,780 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_device`
+2026-06-23 22:45:00,780 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,781 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot`
+2026-06-23 22:45:00,781 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,783 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor`
+2026-06-23 22:45:00,783 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,785 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor_data`
+2026-06-23 22:45:00,785 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,787 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_thermal_data`
+2026-06-23 22:45:00,787 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,788 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot_position_history`
+2026-06-23 22:45:00,788 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,790 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_environment_data`
+2026-06-23 22:45:00,790 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,792 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_alert`
+2026-06-23 22:45:00,792 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,793 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_message`
+2026-06-23 22:45:00,794 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,795 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_report`
+2026-06-23 22:45:00,795 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,797 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_config`
+2026-06-23 22:45:00,797 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,800 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_log`
+2026-06-23 22:45:00,800 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:45:00,801 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     Started server process [19732]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

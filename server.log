@@ -1,0 +1,127 @@
+2026-06-23 22:49:29,211 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2026-06-23 22:49:29,212 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,214 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2026-06-23 22:49:29,215 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,217 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2026-06-23 22:49:29,218 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,220 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-06-23 22:49:29,221 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_user`
+2026-06-23 22:49:29,222 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,225 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_device`
+2026-06-23 22:49:29,226 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,229 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot`
+2026-06-23 22:49:29,230 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,234 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor`
+2026-06-23 22:49:29,234 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,238 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor_data`
+2026-06-23 22:49:29,238 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,241 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_thermal_data`
+2026-06-23 22:49:29,241 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,244 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot_position_history`
+2026-06-23 22:49:29,244 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,247 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_environment_data`
+2026-06-23 22:49:29,247 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,251 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_alert`
+2026-06-23 22:49:29,251 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,257 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_message`
+2026-06-23 22:49:29,258 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,261 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_report`
+2026-06-23 22:49:29,262 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,265 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_config`
+2026-06-23 22:49:29,266 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,269 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_log`
+2026-06-23 22:49:29,269 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,272 INFO sqlalchemy.engine.Engine COMMIT
+================================================
+Starting ÖÇÄÜÑ²¼ìÏµÍ³ v1.0.0
+================================================
+2026-06-23 22:49:29,360 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-06-23 22:49:29,360 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_user`
+2026-06-23 22:49:29,361 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,364 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_device`
+2026-06-23 22:49:29,365 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,368 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot`
+2026-06-23 22:49:29,369 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,371 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor`
+2026-06-23 22:49:29,372 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,374 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor_data`
+2026-06-23 22:49:29,375 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,378 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_thermal_data`
+2026-06-23 22:49:29,379 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,383 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot_position_history`
+2026-06-23 22:49:29,384 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,389 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_environment_data`
+2026-06-23 22:49:29,390 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,393 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_alert`
+2026-06-23 22:49:29,394 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,396 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_message`
+2026-06-23 22:49:29,397 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,400 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_report`
+2026-06-23 22:49:29,400 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,403 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_config`
+2026-06-23 22:49:29,404 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,407 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_log`
+2026-06-23 22:49:29,407 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:29,409 INFO sqlalchemy.engine.Engine COMMIT
+2026-06-23 22:49:34,012 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2026-06-23 22:49:34,012 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,014 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2026-06-23 22:49:34,014 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,015 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2026-06-23 22:49:34,016 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,018 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-06-23 22:49:34,018 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_user`
+2026-06-23 22:49:34,019 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,021 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_device`
+2026-06-23 22:49:34,022 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,024 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot`
+2026-06-23 22:49:34,024 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,027 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor`
+2026-06-23 22:49:34,027 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,029 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor_data`
+2026-06-23 22:49:34,029 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,032 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_thermal_data`
+2026-06-23 22:49:34,032 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,034 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot_position_history`
+2026-06-23 22:49:34,035 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,037 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_environment_data`
+2026-06-23 22:49:34,037 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,039 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_alert`
+2026-06-23 22:49:34,040 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,041 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_message`
+2026-06-23 22:49:34,042 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,044 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_report`
+2026-06-23 22:49:34,044 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,046 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_config`
+2026-06-23 22:49:34,046 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,049 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_log`
+2026-06-23 22:49:34,050 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,053 INFO sqlalchemy.engine.Engine COMMIT
+2026-06-23 22:49:34,172 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-06-23 22:49:34,173 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_user`
+2026-06-23 22:49:34,173 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,175 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_device`
+2026-06-23 22:49:34,175 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,177 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot`
+2026-06-23 22:49:34,178 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,179 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor`
+2026-06-23 22:49:34,180 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,182 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_sensor_data`
+2026-06-23 22:49:34,183 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,185 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_thermal_data`
+2026-06-23 22:49:34,185 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,187 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_robot_position_history`
+2026-06-23 22:49:34,187 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,189 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_environment_data`
+2026-06-23 22:49:34,189 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,191 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_alert`
+2026-06-23 22:49:34,191 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,193 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_message`
+2026-06-23 22:49:34,193 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,195 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_report`
+2026-06-23 22:49:34,195 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,198 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_config`
+2026-06-23 22:49:34,199 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,201 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_log`
+2026-06-23 22:49:34,202 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-06-23 22:49:34,204 INFO sqlalchemy.engine.Engine COMMIT

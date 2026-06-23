@@ -69,3 +69,16 @@ async def shutdown_event():
         except Exception as e:
             print(f"Error shutting down Socket Server: {e}")
         print("================================================")
+
+if __name__ == "__main__":
+    import uvicorn
+    print("================================================")
+    print(f"Starting {settings.APP_NAME} v{settings.APP_VERSION}")
+    print("================================================")
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
+        log_level="info"
+    )

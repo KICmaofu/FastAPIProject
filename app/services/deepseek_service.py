@@ -316,5 +316,21 @@ class DeepSeekService:
             "generatedAt": datetime.now().isoformat()
         }
 
-# 创建全局服务实例
-deepseek_service = DeepSeekService()
+# 全局服务实例（延迟加载）
+_deepseek_service_instance = None
+
+def get_deepseek_service() -> DeepSeekService:
+    """获取 DeepSeek 服务实例（延迟加载）"""
+    global _deepseek_service_instance
+    if _deepseek_service_instance is None:
+        _deepseek_service_instance = DeepSeekService()
+    return _deepseek_service_instance
+
+# 保持向后兼容 - 使用延迟加载属性
+class _DeepSeekServiceProxy:
+    """DeepSeek 服务代理类，实现延迟加载"""
+    def __getattr__(self, name):
+        return getattr(get_deepseek_service(), name)
+
+# 使用代理替代直接实例化，避免模块导入时创建实例
+deepseek_service = _DeepSeekServiceProxy()
