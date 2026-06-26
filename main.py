@@ -1,14 +1,16 @@
-from fastapi import FastAPI, Request, status, Depends
+from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from contextlib import asynccontextmanager
-from app.routers import routers
 from app.config.settings import settings
 from app.config.database import engine, Base
-from app.middleware.request_logger import RequestLoggerMiddleware
+from app.routers.user_router import router as user_router
+from app.routers.robot_router import router as robot_router
+from app.routers.patrol_router import router as patrol_router
+from app.routers.alarm_router import router as alarm_router
+from app.routers.report_router import router as report_router
+from app.routers.ai_router import router as ai_router
+from app.routers.sys_log_router import router as sys_log_router
 import logging
-import threading
-import time
 
 logging.basicConfig(
     level=logging.INFO,
@@ -21,55 +23,11 @@ logging.basicConfig(
 
 logger = logging.getLogger("inspection_system")
 
-Base.metadata.create_all(bind=engine)
-
-socket_server_thread = None
-socket_server_sock = None
-
-def start_socket_server():
-    import sys
-    import os
-    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-    
-    from socket_server.socket_server import start_server
-    global socket_server_sock
-    socket_server_sock = start_server(background=True)
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    logger.info("================================================")
-    logger.info(f"Starting {settings.APP_NAME} v{settings.APP_VERSION}")
-    
-    try:
-        socket_server_thread = threading.Thread(target=start_socket_server, daemon=True)
-        socket_server_thread.start()
-        time.sleep(1)
-        logger.info("Socket Server started successfully")
-    except Exception as e:
-        logger.warning(f"Socket Server not started: {e}")
-    
-    logger.info("================================================")
-    
-    yield
-    
-    logger.info("================================================")
-    logger.info("Shutting down application...")
-    if socket_server_sock:
-        try:
-            socket_server_sock.close()
-            logger.info("Socket Server shutdown successfully")
-        except Exception as e:
-            logger.error(f"Error shutting down Socket Server: {e}")
-    logger.info("================================================")
-
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
-    description="智能巡检系统后端API - 智能机器人巡检管理系统",
-    lifespan=lifespan
+    description="智能巡检系统后端API"
 )
-
-app.add_middleware(RequestLoggerMiddleware)
 
 app.add_middleware(
     CORSMiddleware,
@@ -102,9 +60,6 @@ async def value_error_handler(request: Request, exc: ValueError):
         }
     )
 
-for router in routers:
-    app.include_router(router)
-
 @app.get("/health", summary="健康检查")
 async def health_check():
     return {"code": 200, "msg": "fire-patrol-server is running", "data": None}
@@ -121,24 +76,13 @@ async def root():
         }
     }
 
-@app.get("/socket/status", summary="Socket服务器状态")
-async def socket_status():
-    import socket_server.socket_server as ss
-    return {
-        "code": 200,
-        "msg": "success",
-        "data": {
-            "active_connections": ss.connection_pool['active_connections'],
-            "max_connections": ss.connection_pool['max_connections'],
-            "total_connections": ss.connection_pool['connection_stats']['total_connections'],
-            "peak_connections": ss.connection_pool['connection_stats']['peak_connections'],
-            "total_requests": ss.performance_metrics['total_requests'],
-            "successful_requests": ss.performance_metrics['successful_requests'],
-            "failed_requests": ss.performance_metrics['failed_requests'],
-            "total_alarms_created": ss.performance_metrics['total_alarms_created'],
-            "avg_response_time": f"{ss.performance_metrics['avg_response_time']:.2f} ms"
-        }
-    }
+app.include_router(user_router)
+app.include_router(robot_router)
+app.include_router(patrol_router)
+app.include_router(alarm_router)
+app.include_router(report_router)
+app.include_router(ai_router)
+app.include_router(sys_log_router)
 
 if __name__ == "__main__":
     import uvicorn

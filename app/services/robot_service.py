@@ -1,115 +1,260 @@
-from typing import Optional, List, Dict
 from sqlalchemy.orm import Session
+from sqlalchemy import func, desc
+from app.models.robot import Robot, RobotSensorRecord, RobotCmdRecord
+from app.utils.response import ApiResponse
+from app.services.sys_log_service import SysLogService
 from datetime import datetime
-from app.models.robot import Robot
-from app.crud import robot as robot_crud, sensor_data as sensor_data_crud
-from app.schemas.robot import RobotCreate, RobotUpdate, RobotPositionResponse
 
 class RobotService:
-    def get_robot_list(self, db: Session, page: int = 1, size: int = 10, status: Optional[str] = None) -> Dict:
-        skip = (page - 1) * size
+    @staticmethod
+    def get_robot_list(db: Session):
+        robots = db.query(Robot).filter(Robot.is_deleted == 0).all()
         
-        if status:
-            robots = robot_crud.get_multi_by_status(db, status, skip=skip, limit=size)
-            total = robot_crud.count_by_status(db, status)
-        else:
-            robots = robot_crud.get_multi_active(db, skip=skip, limit=size)
-            total = robot_crud.count(db)
-        
-        # 转换为字典列表
         robot_list = []
         for robot in robots:
             robot_list.append({
                 "id": robot.id,
-                "name": robot.name,
-                "model": robot.model,
-                "battery": float(robot.battery) if robot.battery else 0,
-                "status": robot.status,
-                "location": robot.location,
-                "speed": float(robot.speed) if robot.speed else 0.0
+                "robot_sn": robot.robot_sn,
+                "robot_name": robot.robot_name,
+                "area_name": robot.area_name,
+                "online_status": robot.online_status,
+                "battery": robot.battery,
+                "run_mode": robot.run_mode,
+                "firmware_version": robot.firmware_version,
+                "last_upload_time": robot.last_upload_time.strftime("%Y-%m-%d %H:%M:%S") if robot.last_upload_time else None,
+                "create_by": robot.create_by,
+                "remark": robot.remark,
+                "create_time": robot.create_time.strftime("%Y-%m-%d %H:%M:%S") if robot.create_time else None,
+                "update_time": robot.update_time.strftime("%Y-%m-%d %H:%M:%S") if robot.update_time else None
             })
         
-        return {
-            "list": robot_list,
-            "total": total,
-            "page": page
-        }
-
-    def get_robot_by_id(self, db: Session, robot_id: str) -> Optional[Robot]:
-        return robot_crud.get(db, robot_id)
-
-    def create_robot(self, db: Session, data: RobotCreate) -> Robot:
-        robot_data = data.dict()
-        return robot_crud.create(db, obj_in=robot_data)
-
-    def update_robot(self, db: Session, robot_id: str, data: RobotUpdate) -> Optional[Robot]:
-        robot = robot_crud.get(db, robot_id)
+        return ApiResponse.success(robot_list)
+    
+    @staticmethod
+    def get_robot_detail(db: Session, robot_id: int):
+        robot = db.query(Robot).filter(Robot.id == robot_id, Robot.is_deleted == 0).first()
         if not robot:
-            return None
-        update_data = data.dict(exclude_unset=True)
-        return robot_crud.update(db, db_obj=robot, obj_in=update_data)
-
-    def delete_robot(self, db: Session, robot_id: str) -> bool:
-        robot = robot_crud.get(db, robot_id)
+            return ApiResponse.not_found("机器人不存在")
+        
+        return ApiResponse.success({
+            "id": robot.id,
+            "robot_sn": robot.robot_sn,
+            "robot_name": robot.robot_name,
+            "area_name": robot.area_name,
+            "online_status": robot.online_status,
+            "battery": robot.battery,
+            "run_mode": robot.run_mode,
+            "firmware_version": robot.firmware_version,
+            "last_upload_time": robot.last_upload_time.strftime("%Y-%m-%d %H:%M:%S") if robot.last_upload_time else None,
+            "create_by": robot.create_by,
+            "remark": robot.remark,
+            "create_time": robot.create_time.strftime("%Y-%m-%d %H:%M:%S") if robot.create_time else None,
+            "update_time": robot.update_time.strftime("%Y-%m-%d %H:%M:%S") if robot.update_time else None
+        })
+    
+    @staticmethod
+    def get_robot_by_sn(db: Session, robot_sn: str):
+        robot = db.query(Robot).filter(Robot.robot_sn == robot_sn, Robot.is_deleted == 0).first()
         if not robot:
-            return False
-        robot.is_deleted = True
+            return ApiResponse.not_found("机器人不存在")
+        
+        return ApiResponse.success({
+            "id": robot.id,
+            "robot_sn": robot.robot_sn,
+            "robot_name": robot.robot_name,
+            "area_name": robot.area_name,
+            "online_status": robot.online_status,
+            "battery": robot.battery,
+            "run_mode": robot.run_mode,
+            "firmware_version": robot.firmware_version,
+            "last_upload_time": robot.last_upload_time.strftime("%Y-%m-%d %H:%M:%S") if robot.last_upload_time else None,
+            "create_by": robot.create_by,
+            "remark": robot.remark,
+            "create_time": robot.create_time.strftime("%Y-%m-%d %H:%M:%S") if robot.create_time else None,
+            "update_time": robot.update_time.strftime("%Y-%m-%d %H:%M:%S") if robot.update_time else None
+        })
+    
+    @staticmethod
+    def get_robot_statistics(db: Session):
+        total = db.query(Robot).filter(Robot.is_deleted == 0).count()
+        online = db.query(Robot).filter(Robot.is_deleted == 0, Robot.online_status == 1).count()
+        offline = total - online
+        
+        return ApiResponse.success({"total": total, "online": online, "offline": offline})
+    
+    @staticmethod
+    def add_robot(db: Session, robot_sn: str, robot_name: str, area_name: str, remark: str = None, create_by: str = ""):
+        existing_robot = db.query(Robot).filter(Robot.robot_sn == robot_sn).first()
+        if existing_robot:
+            return ApiResponse.error(400, "机器人序列号已存在")
+        
+        new_robot = Robot(
+            robot_sn=robot_sn,
+            robot_name=robot_name,
+            area_name=area_name,
+            remark=remark or "",
+            create_by=create_by
+        )
+        db.add(new_robot)
         db.commit()
-        return True
-
-    def get_positions(self, db: Session, robot_id: Optional[str] = None) -> List[RobotPositionResponse]:
-        if robot_id:
-            robot = robot_crud.get(db, robot_id)
-            if not robot:
-                return []
-            latest_pos = robot_crud.get_latest_position(db, robot_id)
-            if latest_pos:
-                return [RobotPositionResponse(
-                    id=robot.id,
-                    x=latest_pos.x,
-                    y=latest_pos.y,
-                    battery=latest_pos.battery,
-                    status=robot.status,
-                    speed=latest_pos.speed
-                )]
-            return []
-        else:
-            robots = robot_crud.get_multi_active(db)
-            result = []
-            for robot in robots:
-                latest_pos = robot_crud.get_latest_position(db, robot.id)
-                if latest_pos:
-                    result.append(RobotPositionResponse(
-                        id=robot.id,
-                        x=latest_pos.x,
-                        y=latest_pos.y,
-                        battery=latest_pos.battery,
-                        status=robot.status,
-                        speed=latest_pos.speed
-                    ))
-            return result
-
-    def control_robot(self, db: Session, robot_id: str, action: str, speed: float = 1, duration: Optional[float] = None) -> bool:
-        robot = robot_crud.get(db, robot_id)
+        db.refresh(new_robot)
+        SysLogService.add_log(db, create_by, "机器人", f"添加机器人: {robot_sn}")
+        return ApiResponse.success(msg="添加机器人成功")
+    
+    @staticmethod
+    def update_robot(db: Session, robot_id: int, robot_name: str = None, area_name: str = None, remark: str = None):
+        robot = db.query(Robot).filter(Robot.id == robot_id, Robot.is_deleted == 0).first()
         if not robot:
-            return False
+            return ApiResponse.not_found("机器人不存在")
         
-        if robot.status == "offline":
-            return False
+        if robot_name:
+            robot.robot_name = robot_name
+        if area_name:
+            robot.area_name = area_name
+        if remark is not None:
+            robot.remark = remark
         
-        valid_actions = ["move", "stop", "turn_left", "turn_right"]
-        if action not in valid_actions:
-            return False
-        
-        if action == "stop":
-            robot.status = "idle"
-            robot.speed = 0.0
-        elif action == "move":
-            robot.status = "moving"
-            robot.speed = speed
-        elif action in ["turn_left", "turn_right"]:
-            robot.status = "moving"
-        
-        robot.update_time = datetime.now()
         db.commit()
-        return True
+        SysLogService.add_log(db, "admin", "机器人", f"更新机器人: {robot.robot_sn}")
+        return ApiResponse.success(msg="更新机器人成功")
+    
+    @staticmethod
+    def delete_robot(db: Session, robot_id: int):
+        robot = db.query(Robot).filter(Robot.id == robot_id, Robot.is_deleted == 0).first()
+        if not robot:
+            return ApiResponse.not_found("机器人不存在")
+        
+        robot.is_deleted = 1
+        db.commit()
+        SysLogService.add_log(db, "admin", "机器人", f"删除机器人: {robot.robot_sn}")
+        return ApiResponse.success(msg="删除机器人成功")
+    
+    @staticmethod
+    def send_cmd(db: Session, robot_sn: str, cmd_code: str, param: str = None, operator: str = ""):
+        robot = db.query(Robot).filter(Robot.robot_sn == robot_sn, Robot.is_deleted == 0).first()
+        if not robot:
+            return ApiResponse.not_found("机器人不存在")
+        
+        cmd_record = RobotCmdRecord(
+            robot_sn=robot_sn,
+            cmd_code=cmd_code,
+            cmd_param=param or "",
+            operator=operator,
+            send_time=datetime.now()
+        )
+        db.add(cmd_record)
+        db.commit()
+        db.refresh(cmd_record)
+        return ApiResponse.success(msg="指令下发成功")
+    
+    @staticmethod
+    def get_cmd_list(db: Session, robot_sn: str = None, page: int = 1, page_size: int = 10, cmd_status: int = None):
+        query = db.query(RobotCmdRecord)
+        if robot_sn:
+            query = query.filter(RobotCmdRecord.robot_sn == robot_sn)
+        if cmd_status is not None:
+            query = query.filter(RobotCmdRecord.cmd_status == cmd_status)
+        
+        total = query.count()
+        records = query.order_by(desc(RobotCmdRecord.send_time)).offset((page - 1) * page_size).limit(page_size).all()
+        
+        record_list = []
+        for record in records:
+            record_list.append({
+                "id": record.id,
+                "robot_sn": record.robot_sn,
+                "sensor_record_id": record.sensor_record_id,
+                "cmd_code": record.cmd_code,
+                "hardware_cmd": record.hardware_cmd,
+                "cmd_param": record.cmd_param,
+                "operator": record.operator,
+                "send_time": record.send_time.strftime("%Y-%m-%d %H:%M:%S") if record.send_time else None,
+                "response_code": record.response_code,
+                "response_msg": record.response_msg,
+                "finish_time": record.finish_time.strftime("%Y-%m-%d %H:%M:%S") if record.finish_time else None,
+                "cmd_status": record.cmd_status
+            })
+        
+        return ApiResponse.success_pagination(record_list, total, page, page_size)
+    
+    @staticmethod
+    def get_sensor_history(db: Session, robot_sn: str = None, page: int = 1, page_size: int = 20, start_time: str = None, end_time: str = None):
+        query = db.query(RobotSensorRecord)
+        if robot_sn:
+            query = query.filter(RobotSensorRecord.robot_sn == robot_sn)
+        if start_time:
+            query = query.filter(RobotSensorRecord.collect_time >= start_time)
+        if end_time:
+            query = query.filter(RobotSensorRecord.collect_time <= end_time)
+        
+        total = query.count()
+        records = query.order_by(desc(RobotSensorRecord.collect_time)).offset((page - 1) * page_size).limit(page_size).all()
+        
+        record_list = []
+        for record in records:
+            record_list.append({
+                "id": record.id,
+                "robot_sn": record.robot_sn,
+                "patrol_record_id": record.patrol_record_id,
+                "temperature": record.temperature,
+                "humidity": record.humidity,
+                "smoke_level": record.smoke_level,
+                "max_single_temp": record.max_single_temp,
+                "human_detected": record.human_detected,
+                "fire_risk": record.fire_risk,
+                "thermal_matrix": record.thermal_matrix,
+                "battery": record.battery,
+                "collect_time": record.collect_time.strftime("%Y-%m-%d %H:%M:%S") if record.collect_time else None
+            })
+        
+        return ApiResponse.success_pagination(record_list, total, page, page_size)
+    
+    @staticmethod
+    def get_latest_sensor(db: Session, robot_sn: str):
+        record = db.query(RobotSensorRecord).filter(
+            RobotSensorRecord.robot_sn == robot_sn
+        ).order_by(desc(RobotSensorRecord.collect_time)).first()
+        
+        if not record:
+            return ApiResponse.not_found("暂无传感器数据")
+        
+        return ApiResponse.success({
+            "id": record.id,
+            "robot_sn": record.robot_sn,
+            "patrol_record_id": record.patrol_record_id,
+            "temperature": record.temperature,
+            "humidity": record.humidity,
+            "smoke_level": record.smoke_level,
+            "max_single_temp": record.max_single_temp,
+            "human_detected": record.human_detected,
+            "fire_risk": record.fire_risk,
+            "thermal_matrix": record.thermal_matrix,
+            "battery": record.battery,
+            "collect_time": record.collect_time.strftime("%Y-%m-%d %H:%M:%S") if record.collect_time else None
+        })
+    
+    @staticmethod
+    def get_sensor_statistics(db: Session, robot_sn: str = None, start_time: str = None, end_time: str = None):
+        query = db.query(RobotSensorRecord)
+        if robot_sn:
+            query = query.filter(RobotSensorRecord.robot_sn == robot_sn)
+        if start_time:
+            query = query.filter(RobotSensorRecord.collect_time >= start_time)
+        if end_time:
+            query = query.filter(RobotSensorRecord.collect_time <= end_time)
+        
+        result = query.with_entities(
+            func.count(RobotSensorRecord.id).label("total"),
+            func.avg(RobotSensorRecord.temperature).label("avg_temp"),
+            func.avg(RobotSensorRecord.humidity).label("avg_humidity"),
+            func.avg(RobotSensorRecord.smoke_level).label("avg_smoke"),
+            func.max(RobotSensorRecord.max_single_temp).label("max_temp")
+        ).first()
+        
+        return ApiResponse.success({
+            "total": result.total or 0,
+            "avg_temperature": round(result.avg_temp, 2) if result.avg_temp else 0,
+            "avg_humidity": round(result.avg_humidity, 2) if result.avg_humidity else 0,
+            "avg_smoke_level": round(result.avg_smoke, 2) if result.avg_smoke else 0,
+            "max_temperature": round(result.max_temp, 2) if result.max_temp else 0
+        })

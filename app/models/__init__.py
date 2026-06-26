@@ -1,9 +1,18 @@
-# 数据库模型导出
-from app.models.dict import SysDictType, SysDictItem
-from app.models.user import SysUser
-from app.models.robot import PatrolRobot, RobotPositionHistory, RobotCmdRecord
-from app.models.sensor import PatrolSensorData, PatrolThermalData
-from app.models.patrol import PatrolTask, PatrolRecord
-from app.models.alarm import PatrolAlarm
-from app.models.ai_chat import AiChatRecord
-from app.models.system_log import SysLog
+from .user import SysUser
+from .robot import Robot, RobotSensorRecord, RobotCmdRecord
+from .patrol import PatrolTask, PatrolRecord
+from .alarm import AlarmInfo
+from .ai import AiChatRecord
+from .sys_log import SysLog
+
+__all__ = [
+    "SysUser",
+    "Robot",
+    "RobotSensorRecord",
+    "RobotCmdRecord",
+    "PatrolTask",
+    "PatrolRecord",
+    "AlarmInfo",
+    "AiChatRecord",
+    "SysLog"
+]

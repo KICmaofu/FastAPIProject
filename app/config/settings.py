@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     DB_PORT: int = 3306
     DB_USER: str = "root"
     DB_PASSWORD: str = "12305"
-    DB_NAME: str = "inspection_system"
+    DB_NAME: str = "fire_patrol_system"
     
     # JWT配置
     JWT_SECRET_KEY: str = "your-secret-key-change-in-production"  # 必须设置
