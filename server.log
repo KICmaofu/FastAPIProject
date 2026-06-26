@@ -650,3 +650,172 @@ Starting 智能巡检系统 v1.0.0
 2026-06-26 20:10:52,463 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
 2026-06-26 20:10:53,464 - inspection_system - INFO - Socket Server started successfully
 2026-06-26 20:10:53,464 - inspection_system - INFO - ================================================
+2026-06-26 20:11:49,706 - watchfiles.main - INFO - 259 changes detected
+2026-06-26 20:11:50,069 - watchfiles.main - INFO - 85 changes detected
+2026-06-26 20:11:50,429 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:50,789 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:51,151 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:51,513 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:51,924 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:52,332 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:52,736 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:53,140 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:53,545 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:53,948 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:54,353 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:54,762 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:55,115 - watchfiles.main - INFO - 7 changes detected
+2026-06-26 20:11:55,477 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:55,835 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:56,194 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:56,603 - watchfiles.main - INFO - 8 changes detected
+2026-06-26 20:11:56,958 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:57,320 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:57,729 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:11:58,087 - watchfiles.main - INFO - 7 changes detected
+2026-06-26 20:11:58,441 - watchfiles.main - INFO - 2 changes detected
+2026-06-26 20:11:58,634 - inspection_system - INFO - ================================================
+2026-06-26 20:11:58,635 - inspection_system - INFO - Shutting down application...
+2026-06-26 20:11:58,635 - inspection_system - INFO - Socket Server shutdown successfully
+2026-06-26 20:11:58,635 - inspection_system - INFO - ================================================
+2026-06-26 20:11:59,234 - watchfiles.main - INFO - 2 changes detected
+2026-06-26 20:12:00,249 - inspection_system - INFO - ================================================
+2026-06-26 20:12:00,250 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 20:12:01,251 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 20:12:01,251 - inspection_system - INFO - ================================================
+2026-06-26 20:12:01,356 - inspection_system - INFO - ================================================
+2026-06-26 20:12:01,356 - inspection_system - INFO - Shutting down application...
+2026-06-26 20:12:01,357 - inspection_system - INFO - Socket Server shutdown successfully
+2026-06-26 20:12:01,357 - inspection_system - INFO - ================================================
+2026-06-26 20:12:01,953 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:12:02,710 - inspection_system - INFO - ================================================
+2026-06-26 20:12:02,710 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 20:12:03,711 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 20:12:03,712 - inspection_system - INFO - ================================================
+2026-06-26 20:12:09,012 - inspection_system.request - INFO - Request: GET /health | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:12:09,052 - inspection_system.request - INFO - Response: GET /health | Status: 200 | Time: 0.04s
+2026-06-26 20:12:11,098 - inspection_system.request - INFO - Request: GET / | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:12:11,099 - inspection_system.request - INFO - Response: GET / | Status: 200 | Time: 0.00s
+2026-06-26 20:12:13,136 - inspection_system.request - INFO - Request: GET /socket/status | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:12:13,137 - inspection_system.request - INFO - Response: GET /socket/status | Status: 200 | Time: 0.00s
+2026-06-26 20:12:15,174 - inspection_system.request - INFO - Request: GET /docs | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:12:15,175 - inspection_system.request - INFO - Response: GET /docs | Status: 200 | Time: 0.00s
+2026-06-26 20:12:17,224 - inspection_system.request - INFO - Request: POST /user/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '119', 'content-type': 'application/json'}
+2026-06-26 20:12:17,225 - inspection_system.request - INFO - Response: POST /user/register | Status: 404 | Time: 0.00s
+2026-06-26 20:12:19,278 - inspection_system.request - INFO - Request: POST /user/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '54', 'content-type': 'application/json'}
+2026-06-26 20:12:19,279 - inspection_system.request - INFO - Response: POST /user/login | Status: 404 | Time: 0.00s
+2026-06-26 20:12:21,320 - inspection_system.request - INFO - Request: GET /user/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer None'}
+2026-06-26 20:12:21,321 - inspection_system.request - INFO - Response: GET /user/list | Status: 404 | Time: 0.00s
+2026-06-26 20:12:23,363 - inspection_system.request - INFO - Request: GET /robot/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer None'}
+2026-06-26 20:12:23,364 - inspection_system.request - INFO - Response: GET /robot/list | Status: 404 | Time: 0.00s
+2026-06-26 20:12:25,413 - inspection_system.request - INFO - Request: GET /sensor/data/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer None'}
+2026-06-26 20:12:25,413 - inspection_system.request - INFO - Response: GET /sensor/data/list | Status: 404 | Time: 0.00s
+2026-06-26 20:12:27,453 - inspection_system.request - INFO - Request: GET /alarm/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer None'}
+2026-06-26 20:12:27,454 - inspection_system.request - INFO - Response: GET /alarm/list | Status: 404 | Time: 0.00s
+2026-06-26 20:12:29,495 - inspection_system.request - INFO - Request: GET /patrol/task/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer None'}
+2026-06-26 20:12:29,496 - inspection_system.request - INFO - Response: GET /patrol/task/list | Status: 404 | Time: 0.00s
+2026-06-26 20:12:31,537 - inspection_system.request - INFO - Request: GET /system/dict/type/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer None'}
+2026-06-26 20:12:31,538 - inspection_system.request - INFO - Response: GET /system/dict/type/list | Status: 404 | Time: 0.00s
+2026-06-26 20:13:43,967 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:13:44,094 - inspection_system - INFO - ================================================
+2026-06-26 20:13:44,094 - inspection_system - INFO - Shutting down application...
+2026-06-26 20:13:44,095 - inspection_system - INFO - Socket Server shutdown successfully
+2026-06-26 20:13:44,095 - inspection_system - INFO - ================================================
+2026-06-26 20:13:44,660 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:13:45,420 - inspection_system - INFO - ================================================
+2026-06-26 20:13:45,420 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 20:13:46,421 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 20:13:46,422 - inspection_system - INFO - ================================================
+2026-06-26 20:13:54,613 - inspection_system.request - INFO - Request: GET /health | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:13:54,650 - inspection_system.request - INFO - Response: GET /health | Status: 200 | Time: 0.04s
+2026-06-26 20:13:56,700 - inspection_system.request - INFO - Request: GET / | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:13:56,701 - inspection_system.request - INFO - Response: GET / | Status: 200 | Time: 0.00s
+2026-06-26 20:13:58,746 - inspection_system.request - INFO - Request: GET /socket/status | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:13:58,747 - inspection_system.request - INFO - Response: GET /socket/status | Status: 200 | Time: 0.00s
+2026-06-26 20:14:00,777 - inspection_system.request - INFO - Request: GET /docs | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:14:00,777 - inspection_system.request - INFO - Response: GET /docs | Status: 200 | Time: 0.00s
+2026-06-26 20:14:02,805 - inspection_system.request - INFO - Request: POST /api/user/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '119', 'content-type': 'application/json'}
+2026-06-26 20:14:03,059 - inspection_system.request - INFO - Response: POST /api/user/register | Status: 200 | Time: 0.25s
+2026-06-26 20:14:05,101 - inspection_system.request - INFO - Request: POST /api/user/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '54', 'content-type': 'application/json'}
+2026-06-26 20:14:05,339 - inspection_system.request - INFO - Response: POST /api/user/login | Status: 200 | Time: 0.24s
+2026-06-26 20:14:07,410 - inspection_system.request - INFO - Request: GET /api/user/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3ODI1NjI0NDV9.EjuBFrfl1hMcJcUgEvgUgWGLc6QiKo_-LNk6vHcJRqg'}
+2026-06-26 20:14:07,415 - inspection_system.request - INFO - Response: GET /api/user/list | Status: 403 | Time: 0.01s
+2026-06-26 20:14:09,454 - inspection_system.request - INFO - Request: GET /api/robot/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3ODI1NjI0NDV9.EjuBFrfl1hMcJcUgEvgUgWGLc6QiKo_-LNk6vHcJRqg'}
+2026-06-26 20:14:09,461 - inspection_system.request - INFO - Response: GET /api/robot/list | Status: 200 | Time: 0.01s
+2026-06-26 20:14:11,508 - inspection_system.request - INFO - Request: GET /api/sensor/data/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3ODI1NjI0NDV9.EjuBFrfl1hMcJcUgEvgUgWGLc6QiKo_-LNk6vHcJRqg'}
+2026-06-26 20:14:11,509 - inspection_system.request - INFO - Response: GET /api/sensor/data/list | Status: 404 | Time: 0.00s
+2026-06-26 20:14:13,558 - inspection_system.request - INFO - Request: GET /api/alarm/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3ODI1NjI0NDV9.EjuBFrfl1hMcJcUgEvgUgWGLc6QiKo_-LNk6vHcJRqg'}
+2026-06-26 20:14:13,569 - inspection_system.request - INFO - Response: GET /api/alarm/list | Status: 200 | Time: 0.01s
+2026-06-26 20:14:15,616 - inspection_system.request - INFO - Request: GET /api/patrol/task/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3ODI1NjI0NDV9.EjuBFrfl1hMcJcUgEvgUgWGLc6QiKo_-LNk6vHcJRqg'}
+2026-06-26 20:14:15,625 - inspection_system.request - INFO - Response: GET /api/patrol/task/list | Status: 200 | Time: 0.01s
+2026-06-26 20:14:17,652 - inspection_system.request - INFO - Request: GET /api/system/dict/type/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3ODI1NjI0NDV9.EjuBFrfl1hMcJcUgEvgUgWGLc6QiKo_-LNk6vHcJRqg'}
+2026-06-26 20:14:17,653 - inspection_system.request - INFO - Response: GET /api/system/dict/type/list | Status: 404 | Time: 0.00s
+2026-06-26 20:14:19,683 - inspection_system.request - INFO - Request: GET /api/robot/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3ODI1NjI0NDV9.EjuBFrfl1hMcJcUgEvgUgWGLc6QiKo_-LNk6vHcJRqg'}
+2026-06-26 20:14:19,689 - inspection_system.request - INFO - Response: GET /api/robot/list | Status: 200 | Time: 0.01s
+2026-06-26 20:14:21,721 - inspection_system.request - INFO - Request: GET /api/sensor/data/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3ODI1NjI0NDV9.EjuBFrfl1hMcJcUgEvgUgWGLc6QiKo_-LNk6vHcJRqg'}
+2026-06-26 20:14:21,722 - inspection_system.request - INFO - Response: GET /api/sensor/data/list | Status: 404 | Time: 0.00s
+2026-06-26 20:14:23,764 - inspection_system.request - INFO - Request: GET /api/alarm/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3ODI1NjI0NDV9.EjuBFrfl1hMcJcUgEvgUgWGLc6QiKo_-LNk6vHcJRqg'}
+2026-06-26 20:14:23,769 - inspection_system.request - INFO - Response: GET /api/alarm/list | Status: 200 | Time: 0.01s
+2026-06-26 20:14:42,048 - inspection_system.request - INFO - Request: GET /api/robot/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer test'}
+2026-06-26 20:14:42,050 - inspection_system.request - INFO - Response: GET /api/robot/list | Status: 401 | Time: 0.00s
+2026-06-26 20:15:02,302 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:15:02,473 - inspection_system - INFO - ================================================
+2026-06-26 20:15:02,474 - inspection_system - INFO - Shutting down application...
+2026-06-26 20:15:02,474 - inspection_system - INFO - Socket Server shutdown successfully
+2026-06-26 20:15:02,475 - inspection_system - INFO - ================================================
+2026-06-26 20:15:03,089 - watchfiles.main - INFO - 2 changes detected
+2026-06-26 20:15:03,912 - inspection_system - INFO - ================================================
+2026-06-26 20:15:03,912 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 20:15:04,914 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 20:15:04,914 - inspection_system - INFO - ================================================
+2026-06-26 20:15:05,029 - inspection_system - INFO - ================================================
+2026-06-26 20:15:05,029 - inspection_system - INFO - Shutting down application...
+2026-06-26 20:15:05,030 - inspection_system - INFO - Socket Server shutdown successfully
+2026-06-26 20:15:05,030 - inspection_system - INFO - ================================================
+2026-06-26 20:15:05,567 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:15:06,231 - inspection_system - INFO - ================================================
+2026-06-26 20:15:06,232 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 20:15:07,233 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 20:15:07,234 - inspection_system - INFO - ================================================
+2026-06-26 20:15:12,553 - inspection_system.request - INFO - Request: POST /api/user/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '120', 'content-type': 'application/json'}
+2026-06-26 20:15:12,811 - inspection_system.request - INFO - Response: POST /api/user/register | Status: 200 | Time: 0.26s
+2026-06-26 20:15:14,862 - inspection_system.request - INFO - Request: POST /api/user/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '54', 'content-type': 'application/json'}
+2026-06-26 20:15:15,098 - inspection_system.request - INFO - Response: POST /api/user/login | Status: 200 | Time: 0.24s
+2026-06-26 20:15:17,139 - inspection_system.request - INFO - Request: GET /api/robot/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE3ODI1NjI1MTV9.KwodO7QERy2HZ_hk_SbC567lF_3L7d1aEYEEKU5AxB0'}
+2026-06-26 20:15:17,156 - inspection_system.request - INFO - Response: GET /api/robot/list | Status: 200 | Time: 0.02s
+2026-06-26 20:15:19,189 - inspection_system.request - INFO - Request: GET /api/sensor/data/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE3ODI1NjI1MTV9.KwodO7QERy2HZ_hk_SbC567lF_3L7d1aEYEEKU5AxB0'}
+2026-06-26 20:15:19,210 - inspection_system.request - INFO - Response: GET /api/sensor/data/list | Status: 404 | Time: 0.02s
+2026-06-26 20:15:21,266 - inspection_system.request - INFO - Request: GET /api/alarm/list | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE3ODI1NjI1MTV9.KwodO7QERy2HZ_hk_SbC567lF_3L7d1aEYEEKU5AxB0'}
+2026-06-26 20:15:21,278 - inspection_system.request - INFO - Response: GET /api/alarm/list | Status: 200 | Time: 0.01s
+2026-06-26 20:16:30,358 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:16:30,480 - inspection_system - INFO - ================================================
+2026-06-26 20:16:30,480 - inspection_system - INFO - Shutting down application...
+2026-06-26 20:16:30,481 - inspection_system - INFO - Socket Server shutdown successfully
+2026-06-26 20:16:30,481 - inspection_system - INFO - ================================================
+2026-06-26 20:16:31,076 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:16:31,787 - watchfiles.main - INFO - 5 changes detected
+2026-06-26 20:16:31,854 - inspection_system - INFO - ================================================
+2026-06-26 20:16:31,854 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 20:16:32,855 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 20:16:32,856 - inspection_system - INFO - ================================================
+2026-06-26 20:18:20,152 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:18:20,354 - inspection_system - INFO - ================================================
+2026-06-26 20:18:20,355 - inspection_system - INFO - Shutting down application...
+2026-06-26 20:18:20,355 - inspection_system - INFO - Socket Server shutdown successfully
+2026-06-26 20:18:20,356 - inspection_system - INFO - ================================================
+2026-06-26 20:18:20,935 - watchfiles.main - INFO - 1 change detected
+2026-06-26 20:18:21,604 - inspection_system - INFO - ================================================
+2026-06-26 20:18:21,605 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 20:18:22,605 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 20:18:22,606 - inspection_system - INFO - ================================================
+2026-06-26 20:18:53,992 - inspection_system.request - INFO - Request: GET /health | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:18:54,031 - inspection_system.request - INFO - Response: GET /health | Status: 200 | Time: 0.04s
+2026-06-26 20:18:56,065 - inspection_system.request - INFO - Request: GET / | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:18:56,066 - inspection_system.request - INFO - Response: GET / | Status: 200 | Time: 0.00s
+2026-06-26 20:18:58,087 - inspection_system.request - INFO - Request: GET /socket/status | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:18:58,088 - inspection_system.request - INFO - Response: GET /socket/status | Status: 200 | Time: 0.00s
+2026-06-26 20:19:00,136 - inspection_system.request - INFO - Request: GET /docs | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-26 20:19:00,137 - inspection_system.request - INFO - Response: GET /docs | Status: 200 | Time: 0.00s
+2026-06-26 20:19:02,181 - inspection_system.request - INFO - Request: POST /api/user/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '134', 'content-type': 'application/json'}
+2026-06-26 20:19:02,426 - inspection_system.request - INFO - Response: POST /api/user/register | Status: 200 | Time: 0.25s
+2026-06-26 20:19:04,470 - inspection_system.request - INFO - Request: POST /api/user/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '57', 'content-type': 'application/json'}

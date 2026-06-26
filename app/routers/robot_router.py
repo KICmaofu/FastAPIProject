@@ -29,11 +29,21 @@ def create_log(db: Session, username: str, module: str, operation: str, ip: str,
 # 1. 获取机器人列表
 @router.get("/list", summary="获取机器人列表")
 async def get_robot_list(
+    page: int = 1, pageSize: int = 10,
+    online_status: int = None, robot_sn: str = None,
     current_user: SysUser = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
     """获取机器人列表"""
-    robots = db.query(PatrolRobot).all()
+    query = db.query(PatrolRobot)
+    if online_status:
+        query = query.filter(PatrolRobot.online_status == online_status)
+    if robot_sn:
+        query = query.filter(PatrolRobot.robot_sn.like(f"%{robot_sn}%"))
+    
+    total = query.count()
+    robots = query.order_by(PatrolRobot.update_time.desc()).offset((page - 1) * pageSize).limit(pageSize).all()
+    
     robot_list = [{
         "id": r.id, "robot_sn": r.robot_sn, "robot_name": r.robot_name,
         "area_name": r.area_name, "online_status": r.online_status,
@@ -43,7 +53,10 @@ async def get_robot_list(
         "create_time": r.create_time.isoformat() if r.create_time else None,
         "update_time": r.update_time.isoformat() if r.update_time else None
     } for r in robots]
-    return ApiResponse(code=200, msg="success", data=robot_list)
+    
+    return ApiResponse(code=200, msg="success", data={
+        "list": robot_list, "total": total, "page": page, "pageSize": pageSize
+    })
 
 
 # 2. 获取机器人详情
