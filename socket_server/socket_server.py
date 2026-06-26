@@ -13,9 +13,9 @@ import traceback
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.config.database import SessionLocal
-from app.models.sensor_data import SensorData
-from app.models.thermal_data import ThermalData
-from app.models.robot import Robot
+from app.models.sensor import PatrolSensorData, PatrolThermalData
+from app.models.robot import PatrolRobot
+from app.models.alarm import PatrolAlarm
 
 load_dotenv()
 
@@ -30,6 +30,9 @@ ERROR_RETRY_LIMIT = int(os.getenv('ERROR_RETRY_LIMIT', 3))
 ERROR_RETRY_DELAY = int(os.getenv('ERROR_RETRY_DELAY', 1000))
 HEARTBEAT_INTERVAL = int(os.getenv('HEARTBEAT_INTERVAL', 30000))
 HEARTBEAT_TIMEOUT = int(os.getenv('HEARTBEAT_TIMEOUT', 90000))
+
+SMOKE_ALARM_THRESHOLD = int(os.getenv('SMOKE_ALARM_THRESHOLD', 50))
+FIRE_RISK_ALARM_THRESHOLD = int(os.getenv('FIRE_RISK_ALARM_THRESHOLD', 2))
 
 clients = {}
 client_id_counter = 0
@@ -59,7 +62,8 @@ performance_metrics = {
     'total_data_received': 0,
     'total_data_sent': 0,
     'avg_response_time': 0,
-    'response_times': deque(maxlen=100),  # 使用deque自动限制大小
+    'response_times': deque(maxlen=100),
+    'total_alarms_created': 0,
     'start_time': time.time()
 }
 
@@ -120,13 +124,14 @@ def handle_heartbeat_response(client_id):
         client_heartbeats[client_id] = {'last_sent': datetime.now(), 'last_received': datetime.now()}
     print(f"Received heartbeat response from client #{client_id}")
 
-def record_performance_metrics(start_time, success, data_received, data_sent):
+def record_performance_metrics(start_time, success, data_received, data_sent, alarms_created=0):
     end_time = time.time()
     response_time = (end_time - start_time) * 1000
     
     performance_metrics['total_requests'] += 1
     performance_metrics['total_data_received'] += data_received
     performance_metrics['total_data_sent'] += data_sent
+    performance_metrics['total_alarms_created'] += alarms_created
     performance_metrics['response_times'].append(response_time)
     
     if success:
@@ -153,6 +158,7 @@ def log_performance_metrics():
     print(f"Average response time: {performance_metrics['avg_response_time']:.2f} ms")
     print(f"Total data received: {performance_metrics['total_data_received'] / 1024:.2f} KB")
     print(f"Total data sent: {performance_metrics['total_data_sent'] / 1024:.2f} KB")
+    print(f"Total alarms created: {performance_metrics['total_alarms_created']}")
     print(f"Current connections: {connection_pool['active_connections']}")
     print(f"Connection pool usage: {connection_pool['active_connections'] / connection_pool['max_connections'] * 100:.2f}%")
     print(f"Peak connections: {connection_pool['connection_stats']['peak_connections']}")
@@ -175,13 +181,15 @@ def handle_client_data_direct(sock, client_id, client_info, data, retry_count=0)
     data_received = len(data) if isinstance(data, bytes) else len(str(data))
     data_sent = 0
     success = False
+    alarms_created = 0
     
     try:
         print(f"Processing data for client #{client_id}, retry count: {retry_count}")
         result = process_raw_data(data, client_info)
         
         if result['success']:
-            response = f"Data processed successfully [ID: {result['processingId']}]\n"
+            alarms_created = result.get('alarms_created', 0)
+            response = f"Data processed successfully [ID: {result['processingId']}, Alarms: {alarms_created}]\n"
             if COMPRESSION_ENABLED:
                 compressed_response = compress_data(response)
                 sock.sendall(compressed_response)
@@ -223,7 +231,7 @@ def handle_client_data_direct(sock, client_id, client_info, data, retry_count=0)
                 data_sent = len(response)
             client_errors.pop(client_id, None)
     finally:
-        record_performance_metrics(start_time, success, data_received, data_sent)
+        record_performance_metrics(start_time, success, data_received, data_sent, alarms_created)
 
 def get_client_info(sock):
     try:
@@ -309,6 +317,37 @@ def handle_client_error(client_id, client_info, error):
 def get_timestamp_string():
     return datetime.now().isoformat().replace(':', '-').replace('.', '-')
 
+def determine_alarm_level(fire_risk, smoke_level):
+    if fire_risk >= 3 or smoke_level > 100:
+        return "RED"
+    elif fire_risk >= 2 or smoke_level > SMOKE_ALARM_THRESHOLD:
+        return "ORANGE"
+    return "NORMAL"
+
+def determine_alarm_type(fire_risk, smoke_level, human_detected):
+    if smoke_level > SMOKE_ALARM_THRESHOLD:
+        return "SMOKE"
+    elif fire_risk >= 2:
+        if human_detected:
+            return "HIGH_TEMP"
+        else:
+            return "NO_HUMAN"
+    return "HIGH_TEMP"
+
+def determine_hardware_alarm_type(fire_risk):
+    if fire_risk == 0:
+        return 0
+    elif fire_risk == 1:
+        return 1
+    elif fire_risk == 2:
+        return 2
+    elif fire_risk >= 3:
+        return 3
+    return 0
+
+def should_create_alarm(fire_risk, smoke_level):
+    return fire_risk >= FIRE_RISK_ALARM_THRESHOLD or smoke_level > SMOKE_ALARM_THRESHOLD
+
 def process_raw_data(raw_data, client_info):
     processing_id = get_timestamp_string()
     
@@ -367,23 +406,38 @@ def process_raw_data(raw_data, client_info):
             
             json_data = json.loads(json_string)
         
+        robot_sn = json_data.get('robot_sn') or json_data.get('device_id') or json_data.get('deviceId') or 'unknown'
+        
+        max_single_temp = None
+        thermal_matrix = None
+        
+        max_temp_field = json_data.get('max_temp')
+        if max_temp_field:
+            if isinstance(max_temp_field, list):
+                thermal_matrix = json.dumps(max_temp_field)
+                flat_values = [val for row in max_temp_field for val in max_temp_field if isinstance(val, (int, float))]
+                if flat_values:
+                    max_single_temp = max(flat_values)
+            else:
+                max_single_temp = float(max_temp_field)
+        
         parsed_data = {
             'processingId': processing_id,
             'timestamp': datetime.now().isoformat(),
-            'deviceId': json_data.get('device_id') or json_data.get('deviceId') or 'unknown',
+            'robot_sn': robot_sn,
             'temperature': json_data.get('temperature'),
             'humidity': json_data.get('humidity'),
-            'smokeLevel': json_data.get('smoke_level'),
-            'maxTemp': json_data.get('max_temp'),
-            'humanDetected': json_data.get('human_detected'),
-            'fireRisk': json_data.get('fire_risk'),
-            'envStatus': json_data.get('env_status'),
+            'smoke_level': json_data.get('smoke_level') or json_data.get('smokeLevel') or 0,
+            'max_single_temp': max_single_temp,
+            'human_detected': json_data.get('human_detected') or json_data.get('humanDetected') or 0,
+            'fire_risk': json_data.get('fire_risk') or json_data.get('fireRisk') or 0,
+            'thermal_matrix': thermal_matrix,
             'battery': json_data.get('battery')
         }
         
-        save_to_database(parsed_data, processing_id)
+        alarms_created = save_to_database(parsed_data, processing_id)
         
-        return {'success': True, 'processingId': processing_id, 'data': parsed_data}
+        return {'success': True, 'processingId': processing_id, 'data': parsed_data, 'alarms_created': alarms_created}
     except Exception as error:
         print(f"Data processing failed [ID: {processing_id}]: {error}")
         traceback.print_exc()
@@ -392,78 +446,93 @@ def process_raw_data(raw_data, client_info):
 def save_to_database(parsed_data, processing_id):
     retry_count = 0
     max_retries = 3
+    alarms_created = 0
     
     while retry_count < max_retries:
         try:
             db = SessionLocal()
             try:
-                robot_id = parsed_data['deviceId'][:32]
+                robot_sn = parsed_data['robot_sn'][:50]
                 
-                existing_robot = db.query(Robot).filter(Robot.id == robot_id).first()
+                existing_robot = db.query(PatrolRobot).filter(PatrolRobot.robot_sn == robot_sn).first()
                 if not existing_robot:
-                    print(f"Robot {robot_id} not found, creating new robot")
-                    new_robot = Robot(
-                        id=robot_id,
-                        name=f"Robot {robot_id}",
-                        model="Unknown",
+                    print(f"Robot {robot_sn} not found, creating new robot")
+                    new_robot = PatrolRobot(
+                        robot_sn=robot_sn,
+                        robot_name=f"Robot {robot_sn}",
+                        online_status=1,
                         battery=parsed_data.get('battery', 50),
-                        status="idle"
+                        run_mode=0,
+                        firmware_version="Unknown",
+                        last_upload_time=datetime.now()
                     )
                     db.add(new_robot)
                     db.flush()
-                    print(f"Created new robot: {robot_id}")
+                    print(f"Created new robot: {robot_sn}")
+                else:
+                    existing_robot.online_status = 1
+                    existing_robot.battery = parsed_data.get('battery', existing_robot.battery)
+                    existing_robot.last_upload_time = datetime.now()
                 
-                max_temp_matrix = parsed_data.get('maxTemp')
-                max_temp_value = None
-                min_temp_value = None
-                avg_temp_value = None
-                
-                if max_temp_matrix and isinstance(max_temp_matrix, list):
-                    flat_values = [val for row in max_temp_matrix for val in row]
-                    if flat_values:
-                        max_temp_value = max(flat_values)
-                        min_temp_value = min(flat_values)
-                        avg_temp_value = sum(flat_values) / len(flat_values)
-                
-                sensor_data = SensorData(
-                    robot_id=robot_id,
+                sensor_data = PatrolSensorData(
+                    robot_sn=robot_sn,
+                    patrol_record_id=None,
                     temperature=parsed_data.get('temperature', 0),
                     humidity=parsed_data.get('humidity', 0),
-                    smoke_level=parsed_data.get('smokeLevel', 0),
+                    smoke_level=int(parsed_data.get('smoke_level', 0)),
+                    max_single_temp=parsed_data.get('max_single_temp'),
+                    human_detected=int(parsed_data.get('human_detected', 0)),
+                    fire_risk=int(parsed_data.get('fire_risk', 0)),
+                    thermal_matrix=parsed_data.get('thermal_matrix'),
                     battery=parsed_data.get('battery'),
-                    human_detected=bool(parsed_data.get('humanDetected', False)),
-                    fire_risk=int(parsed_data.get('fireRisk', 0)),
-                    env_status=str(parsed_data.get('envStatus', '0')),
-                    raw_json=json.dumps({
-                        'device_id': parsed_data['deviceId'],
-                        'temperature': parsed_data.get('temperature'),
-                        'humidity': parsed_data.get('humidity'),
-                        'smoke_level': parsed_data.get('smokeLevel'),
-                        'max_temp': parsed_data.get('maxTemp'),
-                        'human_detected': parsed_data.get('humanDetected'),
-                        'fire_risk': parsed_data.get('fireRisk'),
-                        'env_status': parsed_data.get('envStatus'),
-                        'battery': parsed_data.get('battery')
-                    }),
-                    receive_time=datetime.now()
+                    collect_time=datetime.now()
                 )
                 
                 db.add(sensor_data)
                 db.flush()
                 
-                if max_temp_matrix:
-                    thermal_data = ThermalData(
-                        sensor_data_id=sensor_data.id,
-                        max_temp_matrix=max_temp_matrix,
-                        max_temp_value=max_temp_value,
-                        min_temp_value=min_temp_value,
-                        avg_temp_value=avg_temp_value
+                if parsed_data.get('thermal_matrix'):
+                    thermal_data = PatrolThermalData(
+                        robot_sn=robot_sn,
+                        patrol_record_id=None,
+                        thermal_image=None,
+                        thermal_matrix=parsed_data.get('thermal_matrix'),
+                        max_temp=parsed_data.get('max_single_temp'),
+                        avg_temp=None,
+                        min_temp=None,
+                        collect_time=datetime.now()
                     )
                     db.add(thermal_data)
                 
+                fire_risk = int(parsed_data.get('fire_risk', 0))
+                smoke_level = int(parsed_data.get('smoke_level', 0))
+                
+                if should_create_alarm(fire_risk, smoke_level):
+                    alarm_level = determine_alarm_level(fire_risk, smoke_level)
+                    alarm_type = determine_alarm_type(fire_risk, smoke_level, parsed_data.get('human_detected', 0))
+                    hardware_alarm_type = determine_hardware_alarm_type(fire_risk)
+                    
+                    alarm_desc = f"检测到异常 - 火灾风险等级: {fire_risk}, 烟雾浓度: {smoke_level}"
+                    
+                    alarm = PatrolAlarm(
+                        robot_sn=robot_sn,
+                        sensor_record_id=sensor_data.id,
+                        hardware_alarm_type=hardware_alarm_type,
+                        alarm_type=alarm_type,
+                        alarm_level=alarm_level,
+                        alarm_desc=alarm_desc,
+                        area_name="未知区域",
+                        point_name="未知点位",
+                        deal_status=0
+                    )
+                    
+                    db.add(alarm)
+                    alarms_created += 1
+                    print(f"Alarm created for robot {robot_sn} [ID: {processing_id}]")
+                
                 db.commit()
-                print(f"Data saved to database [ID: {processing_id}]")
-                return
+                print(f"Data saved to database [ID: {processing_id}, Alarms: {alarms_created}]")
+                return alarms_created
             finally:
                 db.close()
         except Exception as error:
@@ -519,7 +588,7 @@ def handle_client_connection(sock, addr):
         print(f"Current connections: {connection_pool['active_connections']}")
         
         welcome_message = (
-            f"Welcome to thermal imaging sensor data server!\n"
+            f"Welcome to Fire Patrol Sensor Data Server!\n"
             f"Your client ID: {client_id}\n"
             f"Current connections: {connection_pool['active_connections']}\n"
             f"Max connections: {connection_pool['max_connections']}\n"
@@ -571,7 +640,7 @@ def start_server(background=False):
         server.settimeout(None)
         
         print('=' * 60)
-        print('Thermal Imaging Sensor Data Server Started')
+        print('Fire Patrol Sensor Data Server Started')
         print(f"Listening on: {HOST}:{PORT}")
         print('Waiting for client connections...')
         print('=' * 60)
@@ -608,6 +677,7 @@ def start_server(background=False):
         
         print(f"Heartbeat mechanism started, interval: {HEARTBEAT_INTERVAL}ms, timeout: {HEARTBEAT_TIMEOUT}ms")
         print(f"Performance monitoring started, interval: {METRICS_INTERVAL}ms")
+        print(f"Alarm thresholds - Fire Risk: >= {FIRE_RISK_ALARM_THRESHOLD}, Smoke: > {SMOKE_ALARM_THRESHOLD}")
         
         if background:
             return server

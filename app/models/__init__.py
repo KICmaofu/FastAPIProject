@@ -1,13 +1,9 @@
-from app.models.user import User
-from app.models.device import Device
-from app.models.robot import Robot
-from app.models.sensor import Sensor
-from app.models.sensor_data import SensorData
-from app.models.thermal_data import ThermalData
-from app.models.robot_position_history import RobotPositionHistory
-from app.models.environment_data import EnvironmentData
-from app.models.alert import Alert
-from app.models.message import Message
-from app.models.report import Report
-from app.models.system_config import SystemConfig
-from app.models.system_log import SystemLog
+# 数据库模型导出
+from app.models.dict import SysDictType, SysDictItem
+from app.models.user import SysUser
+from app.models.robot import PatrolRobot, RobotPositionHistory, RobotCmdRecord
+from app.models.sensor import PatrolSensorData, PatrolThermalData
+from app.models.patrol import PatrolTask, PatrolRecord
+from app.models.alarm import PatrolAlarm
+from app.models.ai_chat import AiChatRecord
+from app.models.system_log import SysLog

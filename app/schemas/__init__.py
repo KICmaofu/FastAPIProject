@@ -1,11 +1,25 @@
-from app.schemas.auth import LoginRequest, LoginResponse, RegisterRequest, ResetPasswordRequest
-from app.schemas.robot import RobotCreate, RobotUpdate, RobotResponse, RobotPositionResponse, RobotControlRequest
-from app.schemas.thermal import ThermalDataResponse, ThermalDataHistoryRequest
-from app.schemas.environment import EnvironmentDataResponse, EnvironmentHistoryRequest
-from app.schemas.alert import AlertResponse, AlertProcessRequest, AlertListRequest
-from app.schemas.device import DeviceResponse, DeviceStatsResponse, DeviceCreate, DeviceUpdate
-from app.schemas.sensor import SensorResponse
-from app.schemas.message import MessageResponse, MessageListRequest
-from app.schemas.user import UserResponse, UserCreate, UserUpdate, UserListRequest
-from app.schemas.system import SystemStatusResponse, SystemLogRequest, SystemConfigUpdate
-from app.schemas.report import ReportResponse, ReportCreate, ReportListRequest
+# Schema导出
+from app.schemas.common import ApiResponse, PagedData, PagedResponse, PasswordVerifyRequest, IdRequest, StatusRequest
+from app.schemas.user import (
+    UserRegisterRequest, UserLoginRequest, UserInfoResponse, LoginResponse,
+    UserAddRequest, UserUpdateRequest, ResetPwdRequest, UserDeleteRequest
+)
+from app.schemas.robot import (
+    RobotInfo, RobotStatistics, RobotAddRequest, RobotUpdateRequest,
+    RobotDeleteRequest, SendCmdRequest, CmdRecordInfo, SensorDataInfo
+)
+from app.schemas.patrol import (
+    PatrolTaskInfo, PatrolTaskStatistics, PatrolTaskAddRequest,
+    PatrolTaskUpdateRequest, PatrolTaskDeleteRequest, PatrolTaskStatusRequest,
+    PatrolRecordInfo, PatrolRecordStatistics, StartPatrolRequest, EndPatrolRequest
+)
+from app.schemas.alarm import (
+    AlarmInfo, AlarmDetail, AlarmStatistics, AlarmTrend,
+    DealAlarmRequest, AlarmDeleteRequest
+)
+from app.schemas.report import EnvTrendData, AlarmTrendData, DailyReport, SensorStatistics
+from app.schemas.ai import (
+    AlarmAnalyzeRequest, AlarmAnalyzeResponse, AiChatRequest,
+    AiChatResponse, AiChatRecord, ReportAnalyzeRequest
+)
+from app.schemas.system import LogInfo

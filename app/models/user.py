@@ -1,20 +1,20 @@
-from sqlalchemy import Column, String, DateTime, Boolean, Enum
+# 用户模型
+from sqlalchemy import Column, Integer, String, DateTime, SmallInteger, Text
 from sqlalchemy.sql import func
 from app.config.database import Base
-import uuid
 
-class User(Base):
-    __tablename__ = "t_user"
-    
-    id = Column(String(32), primary_key=True, default=lambda: str(uuid.uuid4()).replace("-", ""))
-    username = Column(String(50), nullable=False, unique=True)
-    phone = Column(String(20), unique=True)
-    password_hash = Column(String(255), nullable=False)
-    role = Column(Enum("admin", "operator", "viewer"), nullable=False)
-    status = Column(Boolean, nullable=False, default=True)
-    create_time = Column(DateTime, nullable=False, server_default=func.now())
-    update_time = Column(DateTime, onupdate=func.now())
-    is_deleted = Column(Boolean, nullable=False, default=False)
-    
-    def __repr__(self):
-        return f"<User(id={self.id}, username={self.username}, role={self.role})>"
+
+class SysUser(Base):
+    """系统用户表"""
+    __tablename__ = 'sys_user'
+
+    id = Column(Integer, primary_key=True, autoincrement=True, comment='主键ID')
+    username = Column(String(50), unique=True, nullable=False, comment='登录账号')
+    password = Column(String(100), nullable=False, comment='BCrypt加密密码')
+    real_name = Column(String(50), nullable=False, comment='真实姓名')
+    phone = Column(String(20), comment='手机号')
+    role = Column(SmallInteger, default=2, comment='角色：1-超级管理员 2-运维员')
+    status = Column(SmallInteger, default=1, comment='状态：0-待审核/禁用 1-正常启用')
+    last_login_time = Column(DateTime, comment='最后登录时间')
+    create_time = Column(DateTime, server_default=func.now(), comment='创建时间')
+    update_time = Column(DateTime, server_default=func.now(), onupdate=func.now(), comment='更新时间')

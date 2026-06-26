@@ -1,56 +1,49 @@
-from fastapi import APIRouter, Depends, Query
+# 系统日志模块路由 - /api/sys
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from typing import Optional
+
 from app.config.database import get_db
-from app.dependencies.auth import get_current_active_user, require_admin
-from app.models.user import User
-from app.services import system_service
-from app.schemas.system import SystemStatusResponse, SystemConfigUpdate, SystemLogListResponse
-from app.utils.response import success_response
+from app.schemas.common import ApiResponse
+from app.models.user import SysUser
+from app.models.system_log import SysLog
+from app.dependencies.auth import require_admin
 
-router = APIRouter(prefix="/api/system", tags=["系统模块"])
+router = APIRouter(prefix="/api/sys", tags=["系统模块"])
 
-@router.get("/status", summary="获取系统状态")
-async def get_system_status(
-    db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_active_user)
+
+# 健康检查
+@router.get("/health", summary="健康检查")
+async def health_check():
+    """健康检查"""
+    return ApiResponse(code=200, msg="fire-patrol-server is running", data=None)
+
+
+# 1. 获取日志列表
+@router.get("/log/list", summary="获取日志列表")
+async def get_log_list(
+    page: int = 1, pageSize: int = 10,
+    username: str = None, startTime: str = None, endTime: str = None,
+    current_user: SysUser = Depends(require_admin),
+    db: Session = Depends(get_db)
 ):
-    status = system_service.get_system_status(db)
-    return success_response(data=status)
-
-@router.get("/logs", summary="获取系统日志")
-async def get_system_logs(
-    level: Optional[str] = Query(None, regex="^(info|warn|error)$"),
-    startTime: Optional[str] = Query(None),
-    endTime: Optional[str] = Query(None),
-    page: int = Query(1, ge=1),
-    size: int = Query(20, ge=1, le=100),
-    db: Session = Depends(get_db),
-    current_user: User = Depends(require_admin)
-):
-    result = system_service.get_system_logs(db, level, startTime, endTime, page, size)
-
-    log_list = []
-    for log in result["list"]:
-        log_list.append({
-            "id": log.id,
-            "level": log.level,
-            "module": log.module,
-            "content": log.content,
-            "time": log.create_time.isoformat()
-        })
-
-    return success_response(data={
-        "list": log_list,
-        "total": result["total"],
-        "page": result["page"]
+    """获取日志列表（管理员）"""
+    query = db.query(SysLog)
+    if username:
+        query = query.filter(SysLog.username == username)
+    if startTime:
+        query = query.filter(SysLog.create_time >= startTime)
+    if endTime:
+        query = query.filter(SysLog.create_time <= endTime)
+    
+    total = query.count()
+    logs = query.order_by(SysLog.create_time.desc()).offset((page - 1) * pageSize).limit(pageSize).all()
+    
+    log_list = [{
+        "id": l.id, "username": l.username, "module": l.module,
+        "operation": l.operation, "ip_address": l.ip_address,
+        "detail": l.detail, "create_time": l.create_time.isoformat() if l.create_time else None
+    } for l in logs]
+    
+    return ApiResponse(code=200, msg="success", data={
+        "list": log_list, "total": total, "page": page, "pageSize": pageSize
     })
-
-@router.put("/config", summary="更新系统配置")
-async def update_system_config(
-    config: SystemConfigUpdate,
-    db: Session = Depends(get_db),
-    current_user: User = Depends(require_admin)
-):
-    system_service.update_system_config(db, config)
-    return success_response(message="配置更新成功")

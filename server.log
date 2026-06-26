@@ -604,3 +604,49 @@ Starting 智能巡检系统 v1.0.0
 2026-06-24 21:58:15,824 - inspection_system.request - INFO - Response: GET /api/environment/latest | Status: 200 | Time: 0.01s
 2026-06-24 21:58:21,537 - inspection_system.request - INFO - Request: GET /api/users | IP: 127.0.0.1 | Headers: {'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYzU3NzlmZmRjZWM0OGIyOGY3YjZhYTE4N2RkNGYzMSIsImV4cCI6MTc4MjMxMTI0NH0.B6n42DpYNivgdL_9q9PjxVrZLzoirw6L-LjiR3Bqz6I', 'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'host': 'localhost:8000', 'connection': 'Keep-Alive'}
 2026-06-24 21:58:21,546 - inspection_system.request - INFO - Response: GET /api/users | Status: 200 | Time: 0.01s
+2026-06-26 19:55:05,287 - inspection_system - INFO - ================================================
+2026-06-26 19:55:05,323 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 19:55:05,325 - inspection_system - INFO - ================================================
+2026-06-26 19:55:06,407 - inspection_system - INFO - ================================================
+2026-06-26 19:55:06,408 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 19:55:06,518 - watchfiles.main - INFO - 13 changes detected
+2026-06-26 19:55:07,409 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 19:55:07,409 - inspection_system - INFO - ================================================
+2026-06-26 19:55:44,683 - inspection_system - INFO - ================================================
+2026-06-26 19:55:44,684 - inspection_system - INFO - Shutting down application...
+2026-06-26 19:55:44,684 - inspection_system - INFO - Socket Server shutdown successfully
+2026-06-26 19:55:44,684 - inspection_system - INFO - ================================================
+2026-06-26 19:55:46,872 - inspection_system - INFO - ================================================
+2026-06-26 19:55:46,873 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 19:55:46,873 - inspection_system - INFO - ================================================
+2026-06-26 19:55:47,929 - inspection_system - INFO - ================================================
+2026-06-26 19:55:47,929 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 19:55:48,931 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 19:55:48,931 - inspection_system - INFO - ================================================
+2026-06-26 19:56:02,724 - inspection_system - INFO - ================================================
+2026-06-26 19:56:02,724 - inspection_system - INFO - Shutting down application...
+2026-06-26 19:56:02,724 - inspection_system - INFO - Socket Server shutdown successfully
+2026-06-26 19:56:02,725 - inspection_system - INFO - ================================================
+2026-06-26 19:56:05,139 - inspection_system - INFO - ================================================
+2026-06-26 19:56:05,139 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 19:56:06,141 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 19:56:06,141 - inspection_system - INFO - ================================================
+2026-06-26 19:57:29,595 - inspection_system - INFO - ================================================
+2026-06-26 19:57:29,595 - inspection_system - INFO - Shutting down application...
+2026-06-26 19:57:29,596 - inspection_system - INFO - Socket Server shutdown successfully
+2026-06-26 19:57:29,596 - inspection_system - INFO - ================================================
+2026-06-26 20:09:13,250 - inspection_system - INFO - ================================================
+2026-06-26 20:09:13,250 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 20:09:13,250 - inspection_system - INFO - ================================================
+2026-06-26 20:09:14,296 - inspection_system - INFO - ================================================
+2026-06-26 20:09:14,297 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 20:09:15,298 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 20:09:15,298 - inspection_system - INFO - ================================================
+2026-06-26 20:10:02,135 - inspection_system - INFO - ================================================
+2026-06-26 20:10:02,135 - inspection_system - INFO - Shutting down application...
+2026-06-26 20:10:02,135 - inspection_system - INFO - Socket Server shutdown successfully
+2026-06-26 20:10:02,135 - inspection_system - INFO - ================================================
+2026-06-26 20:10:52,463 - inspection_system - INFO - ================================================
+2026-06-26 20:10:52,463 - inspection_system - INFO - Starting 智能巡检系统 v1.0.0
+2026-06-26 20:10:53,464 - inspection_system - INFO - Socket Server started successfully
+2026-06-26 20:10:53,464 - inspection_system - INFO - ================================================

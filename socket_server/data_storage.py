@@ -6,16 +6,19 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 RAW_DATA_DIR = os.path.join(DATA_DIR, 'raw')
 PROCESSED_DATA_DIR = os.path.join(DATA_DIR, 'processed')
 
+SMOKE_ALARM_THRESHOLD = 50
+FIRE_RISK_ALARM_THRESHOLD = 2
+
 def is_abnormal_data(parsed_data):
     if not parsed_data:
         return False
     
-    fire_risk = parsed_data.get('fireRisk')
-    if fire_risk in (2, 3):
+    fire_risk = parsed_data.get('fire_risk', 0)
+    if fire_risk >= FIRE_RISK_ALARM_THRESHOLD:
         return True
     
-    env_status = parsed_data.get('envStatus')
-    if env_status in ('2', '3', 2, 3):
+    smoke_level = parsed_data.get('smoke_level', 0)
+    if smoke_level > SMOKE_ALARM_THRESHOLD:
         return True
     
     return False
@@ -39,7 +42,7 @@ def save_raw_data(raw_data, processing_id, client_info, parsed_data=None):
         'clientInfo': client_info,
         'rawData': raw_data.decode('utf-8') if isinstance(raw_data, bytes) else str(raw_data),
         'dataSize': len(raw_data) if isinstance(raw_data, bytes) else len(str(raw_data)),
-        'abnormalType': 'FIRE_RISK' if parsed_data['fireRisk'] >= 2 else 'ENV_STATUS'
+        'abnormalType': 'FIRE_RISK' if parsed_data.get('fire_risk', 0) >= 2 else 'SMOKE'
     }
     
     existing_data = []
@@ -73,7 +76,7 @@ def save_processed_data(processed_data, processing_id):
         'processingId': processing_id,
         'timestamp': datetime.now().isoformat(),
         'data': processed_data,
-        'abnormalType': 'FIRE_RISK' if processed_data['fireRisk'] >= 2 else 'ENV_STATUS'
+        'abnormalType': 'FIRE_RISK' if processed_data.get('fire_risk', 0) >= 2 else 'SMOKE'
     }
     
     existing_data = []

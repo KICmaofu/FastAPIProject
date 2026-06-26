@@ -1,20 +1,17 @@
-from sqlalchemy import Column, String, DateTime, Enum, ForeignKey, Text, Integer
+# 系统日志模型
+from sqlalchemy import Column, Integer, String, DateTime, Text
 from sqlalchemy.sql import func
-from sqlalchemy.orm import relationship
 from app.config.database import Base
 
-class SystemLog(Base):
-    __tablename__ = "t_system_log"
-    
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    level = Column(Enum("info", "warn", "error"), nullable=False)
-    module = Column(String(50))
-    content = Column(Text)
-    user_id = Column(String(32), ForeignKey("t_user.id"))
-    ip_address = Column(String(50))
-    create_time = Column(DateTime, nullable=False, server_default=func.now())
-    
-    user = relationship("User", backref="system_logs")
-    
-    def __repr__(self):
-        return f"<SystemLog(id={self.id}, level={self.level}, module={self.module})>"
+
+class SysLog(Base):
+    """系统操作审计日志表"""
+    __tablename__ = 'sys_log'
+
+    id = Column(Integer, primary_key=True, autoincrement=True, comment='主键ID')
+    username = Column(String(50), index=True, comment='操作用户')
+    module = Column(String(50), comment='操作模块')
+    operation = Column(String(100), comment='操作类型')
+    ip_address = Column(String(50), comment='IP地址')
+    detail = Column(Text, comment='操作详情')
+    create_time = Column(DateTime, server_default=func.now(), comment='创建时间')

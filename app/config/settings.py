@@ -13,9 +13,14 @@ class Settings(BaseSettings):
     DB_NAME: str = "inspection_system"
     
     # JWT配置
-    JWT_SECRET_KEY: str = ""  # 必须设置，禁止在生产环境使用默认值
+    JWT_SECRET_KEY: str = "your-secret-key-change-in-production"  # 必须设置
     JWT_ALGORITHM: str = "HS256"
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    
+    @property
+    def JWT_EXPIRE_HOURS(self):
+        from datetime import timedelta
+        return timedelta(hours=24)
     
     # 密码配置
     PASSWORD_HASH_ALGORITHM: str = "bcrypt"
