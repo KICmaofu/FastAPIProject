@@ -5,10 +5,22 @@ from fastapi.responses import JSONResponse
 from app.routers import routers
 from app.config.settings import settings
 from app.config.database import engine, Base
+from app.utils.rate_limiter import rate_limiter
+from app.middleware.request_logger import RequestLoggerMiddleware
 import threading
 import time
 import socket
 import logging
+
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler("server.log"),
+        logging.StreamHandler()
+    ]
+)
 
 logger = logging.getLogger("inspection_system")
 
@@ -19,6 +31,32 @@ app = FastAPI(
     version=settings.APP_VERSION,
     description="智能巡检系统后端API"
 )
+
+# 请求限流中间件
+@app.middleware("http")
+async def rate_limit_middleware(request: Request, call_next):
+    client_ip = request.client.host
+    
+    # 健康检查接口不限流
+    if request.url.path == "/" or request.url.path.startswith("/docs") or request.url.path.startswith("/openapi.json"):
+        return await call_next(request)
+    
+    if not rate_limiter.is_allowed(client_ip):
+        return JSONResponse(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            content={
+                "code": 429,
+                "message": "请求过于频繁，请稍后再试",
+                "data": None
+            }
+        )
+    
+    response = await call_next(request)
+    response.headers["X-RateLimit-Remaining"] = str(rate_limiter.get_remaining(client_ip))
+    return response
+
+# 请求日志中间件
+app.add_middleware(RequestLoggerMiddleware)
 
 app.add_middleware(
     CORSMiddleware,

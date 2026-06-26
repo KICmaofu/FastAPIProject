@@ -125,3 +125,482 @@ Starting ÖÇÄÜÑ²¼ìÏµÍ³ v1.0.0
 2026-06-23 22:49:34,201 INFO sqlalchemy.engine.Engine DESCRIBE `inspection_system`.`t_system_log`
 2026-06-23 22:49:34,202 INFO sqlalchemy.engine.Engine [raw sql] {}
 2026-06-23 22:49:34,204 INFO sqlalchemy.engine.Engine COMMIT
+2026-06-24 20:48:12,355 - inspection_system.request - INFO - Request: GET / | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-24 20:48:12,392 - inspection_system.request - INFO - Response: GET / | Status: 200 | Time: 0.04s
+2026-06-24 20:48:14,444 - inspection_system.request - INFO - Request: POST /api/auth/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '111', 'content-type': 'application/json'}
+2026-06-24 20:48:14,478 - inspection_system.request - INFO - Response: POST /api/auth/register | Status: 409 | Time: 0.03s
+2026-06-24 20:48:16,520 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '73', 'content-type': 'application/json'}
+2026-06-24 20:48:16,543 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.02s
+2026-06-24 20:48:18,594 - inspection_system.request - INFO - Request: GET /api/users | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzA5Nn0.c7E5bcQ3HJr3B_BoZFsYNTxkzc7-ZRLE6-SaM91S_9w'}
+2026-06-24 20:48:18,600 - inspection_system.request - INFO - Response: GET /api/users | Status: 403 | Time: 0.01s
+2026-06-24 20:48:20,642 - inspection_system.request - INFO - Request: GET /api/users/me | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzA5Nn0.c7E5bcQ3HJr3B_BoZFsYNTxkzc7-ZRLE6-SaM91S_9w'}
+2026-06-24 20:48:20,645 - inspection_system.request - INFO - Response: GET /api/users/me | Status: 200 | Time: 0.00s
+2026-06-24 20:48:22,664 - inspection_system.request - INFO - Request: GET /api/alerts | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzA5Nn0.c7E5bcQ3HJr3B_BoZFsYNTxkzc7-ZRLE6-SaM91S_9w'}
+2026-06-24 20:48:22,678 - inspection_system.request - INFO - Response: GET /api/alerts | Status: 200 | Time: 0.01s
+2026-06-24 20:48:24,726 - inspection_system.request - INFO - Request: GET /api/messages | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzA5Nn0.c7E5bcQ3HJr3B_BoZFsYNTxkzc7-ZRLE6-SaM91S_9w'}
+2026-06-24 20:48:24,736 - inspection_system.request - INFO - Response: GET /api/messages | Status: 200 | Time: 0.01s
+2026-06-24 20:48:26,757 - inspection_system.request - INFO - Request: GET /api/robot | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzA5Nn0.c7E5bcQ3HJr3B_BoZFsYNTxkzc7-ZRLE6-SaM91S_9w'}
+2026-06-24 20:48:26,766 - inspection_system.request - INFO - Response: GET /api/robot | Status: 200 | Time: 0.01s
+2026-06-24 20:48:30,863 - inspection_system.request - INFO - Request: GET / | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-24 20:48:30,864 - inspection_system.request - INFO - Response: GET / | Status: 200 | Time: 0.00s
+2026-06-24 20:48:41,606 - inspection_system.request - INFO - Request: GET / | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-24 20:48:41,606 - inspection_system.request - INFO - Response: GET / | Status: 200 | Time: 0.00s
+2026-06-24 20:48:43,637 - inspection_system.request - INFO - Request: POST /api/auth/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '111', 'content-type': 'application/json'}
+2026-06-24 20:48:43,641 - inspection_system.request - INFO - Response: POST /api/auth/register | Status: 409 | Time: 0.00s
+2026-06-24 20:48:45,672 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '73', 'content-type': 'application/json'}
+2026-06-24 20:48:45,684 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 20:48:47,728 - inspection_system.request - INFO - Request: GET /api/users | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzEyNX0.ZYVUCLWd3nscxImNI2CxW79M_DyXLWFNSQ8WvbK2H7g'}
+2026-06-24 20:48:47,732 - inspection_system.request - INFO - Response: GET /api/users | Status: 403 | Time: 0.00s
+2026-06-24 20:48:49,745 - inspection_system.request - INFO - Request: GET /api/users/me | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzEyNX0.ZYVUCLWd3nscxImNI2CxW79M_DyXLWFNSQ8WvbK2H7g'}
+2026-06-24 20:48:49,749 - inspection_system.request - INFO - Response: GET /api/users/me | Status: 200 | Time: 0.00s
+2026-06-24 20:48:51,786 - inspection_system.request - INFO - Request: GET /api/alerts | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzEyNX0.ZYVUCLWd3nscxImNI2CxW79M_DyXLWFNSQ8WvbK2H7g'}
+2026-06-24 20:48:51,791 - inspection_system.request - INFO - Response: GET /api/alerts | Status: 200 | Time: 0.00s
+2026-06-24 20:48:53,819 - inspection_system.request - INFO - Request: GET /api/messages | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzEyNX0.ZYVUCLWd3nscxImNI2CxW79M_DyXLWFNSQ8WvbK2H7g'}
+2026-06-24 20:48:53,824 - inspection_system.request - INFO - Response: GET /api/messages | Status: 200 | Time: 0.01s
+2026-06-24 20:48:55,876 - inspection_system.request - INFO - Request: GET /api/robot | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzEyNX0.ZYVUCLWd3nscxImNI2CxW79M_DyXLWFNSQ8WvbK2H7g'}
+2026-06-24 20:48:55,883 - inspection_system.request - INFO - Response: GET /api/robot | Status: 200 | Time: 0.01s
+2026-06-24 20:48:59,237 - inspection_system.request - INFO - Request: GET / | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-24 20:48:59,238 - inspection_system.request - INFO - Response: GET / | Status: 200 | Time: 0.00s
+2026-06-24 20:49:01,294 - inspection_system.request - INFO - Request: POST /api/auth/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '111', 'content-type': 'application/json'}
+2026-06-24 20:49:01,299 - inspection_system.request - INFO - Response: POST /api/auth/register | Status: 409 | Time: 0.00s
+2026-06-24 20:49:03,352 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '73', 'content-type': 'application/json'}
+2026-06-24 20:49:03,364 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 20:49:05,401 - inspection_system.request - INFO - Request: GET /api/users | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzE0M30.ts5bKScFnQBBqqSVhgai_TT6ZcYeygFsaEZoOROysrc'}
+2026-06-24 20:49:05,404 - inspection_system.request - INFO - Response: GET /api/users | Status: 403 | Time: 0.00s
+2026-06-24 20:49:19,447 - watchfiles.main - INFO - 4 changes detected
+2026-06-24 20:49:19,823 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:20,183 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:20,541 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:20,903 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:21,262 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:21,619 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:21,818 - inspection_system.request - INFO - Request: GET / | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-24 20:49:21,819 - inspection_system.request - INFO - Response: GET / | Status: 200 | Time: 0.00s
+2026-06-24 20:49:21,980 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:22,335 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:22,743 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:23,150 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:23,556 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:23,964 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:24,372 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:24,779 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:25,186 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:25,593 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:26,000 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:26,458 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:26,873 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:27,278 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:27,685 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:28,090 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:28,496 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:28,950 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:29,316 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:29,728 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:30,135 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:30,543 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:30,947 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:31,350 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:31,755 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:32,161 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:32,569 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:32,976 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:33,385 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:33,742 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:34,153 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:34,557 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:34,963 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:35,370 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:35,775 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:36,182 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:36,586 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:36,991 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:37,446 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:37,851 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:38,205 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:38,617 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:39,125 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:39,540 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:39,944 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:40,349 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:40,752 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:41,159 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:41,565 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:41,973 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:42,381 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:42,742 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:43,149 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:43,555 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:43,964 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:44,372 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:44,775 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:45,181 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:45,589 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:45,996 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:46,399 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:46,806 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:47,211 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:47,618 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:48,021 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:48,429 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:48,832 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:49,239 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:49,648 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:50,056 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:50,462 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:50,868 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:51,323 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:51,689 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:52,098 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:52,503 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:52,910 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:53,314 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:53,431 - inspection_system.request - INFO - Request: GET / | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-24 20:49:53,432 - inspection_system.request - INFO - Response: GET / | Status: 200 | Time: 0.00s
+2026-06-24 20:49:53,720 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:54,125 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:54,532 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:54,937 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:55,295 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:55,446 - inspection_system.request - INFO - Request: POST /api/auth/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '111', 'content-type': 'application/json'}
+2026-06-24 20:49:55,450 - inspection_system.request - INFO - Response: POST /api/auth/register | Status: 409 | Time: 0.00s
+2026-06-24 20:49:55,704 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:56,108 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:56,516 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:56,922 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:57,332 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:57,479 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '73', 'content-type': 'application/json'}
+2026-06-24 20:49:57,492 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 20:49:57,737 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:58,141 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:58,548 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:58,955 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:59,361 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:49:59,539 - inspection_system.request - INFO - Request: GET /api/users | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzE5N30.4CsUcLn4umVtgALjTs0bNNuZq_w0CtNZuYEFuv75Wrg'}
+2026-06-24 20:49:59,542 - inspection_system.request - INFO - Response: GET /api/users | Status: 403 | Time: 0.00s
+2026-06-24 20:49:59,766 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:00,225 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:00,588 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:01,049 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:01,453 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:01,599 - inspection_system.request - INFO - Request: GET /api/users/me | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzE5N30.4CsUcLn4umVtgALjTs0bNNuZq_w0CtNZuYEFuv75Wrg'}
+2026-06-24 20:50:01,602 - inspection_system.request - INFO - Response: GET /api/users/me | Status: 200 | Time: 0.00s
+2026-06-24 20:50:01,858 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:02,263 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:02,665 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:03,071 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:03,480 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:03,627 - inspection_system.request - INFO - Request: GET /api/alerts | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzE5N30.4CsUcLn4umVtgALjTs0bNNuZq_w0CtNZuYEFuv75Wrg'}
+2026-06-24 20:50:03,632 - inspection_system.request - INFO - Response: GET /api/alerts | Status: 200 | Time: 0.01s
+2026-06-24 20:50:03,887 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:04,244 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:04,657 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:05,063 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:05,469 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:05,679 - inspection_system.request - INFO - Request: GET /api/messages | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YmQ1MGY2OTMwODY0MTI2YWVjNjQzOWVjMTAyMzhlNSIsImV4cCI6MTc4MjMwNzE5N30.4CsUcLn4umVtgALjTs0bNNuZq_w0CtNZuYEFuv75Wrg'}
+2026-06-24 20:50:05,684 - inspection_system.request - INFO - Response: GET /api/messages | Status: 200 | Time: 0.01s
+2026-06-24 20:50:05,876 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:06,282 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:50:06,686 - watchfiles.main - INFO - 2 changes detected
+2026-06-24 20:52:12,020 - watchfiles.main - INFO - 2 changes detected
+2026-06-24 20:52:12,383 - watchfiles.main - INFO - 13 changes detected
+2026-06-24 20:52:12,789 - watchfiles.main - INFO - 24 changes detected
+2026-06-24 20:53:02,968 - inspection_system.request - INFO - Request: POST /api/auth/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '87', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5173', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5173/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 20:53:02,975 - inspection_system.request - INFO - Response: POST /api/auth/register | Status: 422 | Time: 0.01s
+2026-06-24 20:55:17,376 - watchfiles.main - INFO - 2 changes detected
+2026-06-24 20:55:17,736 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:42,028 - inspection_system.request - INFO - Request: POST /api/auth/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '87', 'accept': 'application/json, text/plain, */*', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN', 'content-type': 'application/json', 'origin': 'http://localhost:5173', 'referer': 'http://localhost:5173/login', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TraeCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'sec-ch-ua': '"Not_A Brand";v="99", "Chromium";v="142"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Windows"'}
+2026-06-24 20:56:42,048 - inspection_system.request - INFO - Response: POST /api/auth/register | Status: 422 | Time: 0.02s
+2026-06-24 20:56:42,123 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:42,478 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:42,887 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:43,294 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:43,699 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:44,105 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:44,512 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:44,920 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:45,327 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:45,732 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:46,141 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:46,547 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:46,955 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:47,362 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:47,767 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:48,175 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:48,579 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:48,986 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:49,390 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:49,796 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:50,201 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:50,608 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:51,016 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:51,419 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:51,825 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:52,231 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:52,588 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:53,000 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:53,406 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:53,812 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:54,219 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:54,625 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:55,030 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:55,437 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:55,842 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:56,249 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:56,655 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:57,059 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:57,465 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:57,868 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:58,273 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:58,681 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:59,087 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:59,503 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:56:59,910 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:00,316 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:00,719 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:01,124 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:01,532 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:01,938 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:02,344 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:02,750 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:03,155 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:03,512 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:03,923 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:04,330 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:04,737 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:05,144 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:05,549 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:05,954 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:06,360 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:06,765 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:07,175 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:07,578 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:07,988 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:08,393 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:08,798 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:09,156 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:09,565 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:09,974 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:10,381 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:10,790 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:11,197 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:11,606 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:12,012 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:12,415 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:12,822 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:13,228 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:13,631 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:14,038 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:14,446 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:14,850 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:15,207 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:15,618 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:16,022 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:16,426 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:16,836 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:17,239 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:17,645 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:18,054 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:18,460 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:18,866 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:19,271 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:19,677 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:20,082 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:20,489 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:20,893 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:21,301 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:21,708 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:22,113 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:22,520 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:22,925 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:23,332 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:23,738 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:24,146 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:24,503 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:24,911 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:25,317 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:25,719 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:26,124 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:26,530 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:26,935 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:27,341 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:27,749 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:28,158 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:28,563 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:28,970 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:29,376 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:29,781 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:30,184 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:30,591 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:30,996 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:31,400 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:31,808 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:32,211 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:32,571 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:32,986 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:33,394 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:33,801 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:34,208 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:34,613 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:34,973 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:35,432 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:35,786 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:36,195 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:36,603 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:37,008 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:37,413 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:37,821 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:38,229 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:38,638 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:39,043 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:39,451 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:39,855 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:40,260 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:40,666 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:41,073 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:41,477 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:41,882 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:42,240 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:42,649 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:43,054 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:43,461 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:43,871 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:44,276 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:44,692 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:45,100 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:45,504 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:45,911 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:46,319 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:46,722 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:47,126 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:47,533 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:47,894 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:48,307 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:48,711 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:49,119 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:49,524 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:49,931 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:50,339 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:50,747 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:51,154 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:51,562 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:51,917 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:52,326 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:52,732 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:53,139 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:53,597 - watchfiles.main - INFO - 1 change detected
+2026-06-24 20:57:53,949 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:05:03,547 - watchfiles.main - INFO - 2 changes detected
+2026-06-24 21:05:03,899 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:05:09,862 - watchfiles.main - INFO - 2 changes detected
+2026-06-24 21:05:10,216 - watchfiles.main - INFO - 8 changes detected
+2026-06-24 21:05:10,576 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:05:22,220 - watchfiles.main - INFO - 30 changes detected
+2026-06-24 21:05:22,630 - watchfiles.main - INFO - 3 changes detected
+2026-06-24 21:05:44,773 - watchfiles.main - INFO - 4 changes detected
+2026-06-24 21:06:05,455 - watchfiles.main - INFO - 2 changes detected
+2026-06-24 21:06:05,812 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:06:45,887 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '77', 'accept': 'application/json, text/plain, */*', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN', 'content-type': 'application/json', 'origin': 'http://localhost:5174', 'referer': 'http://localhost:5174/login', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TraeCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'sec-ch-ua': '"Not_A Brand";v="99", "Chromium";v="142"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Windows"'}
+2026-06-24 21:06:45,927 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 400 | Time: 0.04s
+2026-06-24 21:07:15,047 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:07:38,894 - watchfiles.main - INFO - 2 changes detected
+2026-06-24 21:07:39,250 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:07:58,260 - watchfiles.main - INFO - 6 changes detected
+2026-06-24 21:08:22,130 - watchfiles.main - INFO - 2 changes detected
+2026-06-24 21:08:22,491 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:08:58,860 - watchfiles.main - INFO - 2 changes detected
+2026-06-24 21:08:59,217 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:09:40,549 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '77', 'accept': 'application/json, text/plain, */*', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN', 'content-type': 'application/json', 'origin': 'http://localhost:5176', 'referer': 'http://localhost:5176/login', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TraeCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'sec-ch-ua': '"Not_A Brand";v="99", "Chromium";v="142"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Windows"'}
+2026-06-24 21:09:40,555 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 400 | Time: 0.01s
+2026-06-24 21:10:10,023 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:10:21,538 - watchfiles.main - INFO - 2 changes detected
+2026-06-24 21:10:21,892 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:11:07,963 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '77', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:11:07,967 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 400 | Time: 0.00s
+2026-06-24 21:11:29,693 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '77', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:11:29,698 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 400 | Time: 0.00s
+2026-06-24 21:11:49,602 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '79', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:11:49,608 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 400 | Time: 0.01s
+2026-06-24 21:12:23,271 - inspection_system.request - INFO - Request: POST /api/auth/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '91', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:12:23,274 - inspection_system.request - INFO - Response: POST /api/auth/register | Status: 422 | Time: 0.00s
+2026-06-24 21:13:31,002 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:13:32,360 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:13:32,373 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:13:49,414 - inspection_system.request - INFO - Request: POST /api/auth/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '91', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:13:49,416 - inspection_system.request - INFO - Response: POST /api/auth/register | Status: 422 | Time: 0.00s
+2026-06-24 21:14:09,486 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:14:43,210 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:14:44,326 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:17:18,967 - inspection_system.request - INFO - Request: POST /api/auth/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '91', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:17:18,976 - inspection_system.request - INFO - Response: POST /api/auth/register | Status: 422 | Time: 0.01s
+2026-06-24 21:19:11,864 - inspection_system.request - INFO - Request: POST /api/auth/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '95', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:19:11,937 - inspection_system.request - INFO - Response: POST /api/auth/register | Status: 200 | Time: 0.07s
+2026-06-24 21:19:34,826 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '79', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:19:34,842 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 400 | Time: 0.02s
+2026-06-24 21:20:06,124 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '81', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:20:06,151 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.03s
+2026-06-24 21:20:29,109 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '81', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:20:29,123 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:21:02,724 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '79', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:21:02,739 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 400 | Time: 0.01s
+2026-06-24 21:22:33,704 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '79', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:22:33,720 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 400 | Time: 0.02s
+2026-06-24 21:22:56,676 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '81', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:22:56,689 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:24:24,298 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '81', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:24:24,311 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:24:38,523 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '81', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:24:38,537 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:25:22,690 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '81', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:25:22,703 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:25:47,776 - inspection_system.request - INFO - Request: POST /api/auth/register | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '95', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:25:47,780 - inspection_system.request - INFO - Response: POST /api/auth/register | Status: 409 | Time: 0.00s
+2026-06-24 21:26:26,008 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '81', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:26:26,020 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:26:57,888 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '81', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:26:57,902 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:27:56,961 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '81', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:27:56,975 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:30:24,721 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '79', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:30:24,792 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.07s
+2026-06-24 21:31:19,157 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '79', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:31:19,170 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:32:18,933 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive', 'content-length': '67', 'content-type': 'application/json'}
+2026-06-24 21:32:18,945 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:33:08,252 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '79', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:33:08,265 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:34:01,664 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '80', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:34:01,683 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 400 | Time: 0.02s
+2026-06-24 21:34:38,861 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '79', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:34:38,875 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:35:24,998 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '79', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:35:25,011 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:37:19,815 - inspection_system.request - INFO - Request: GET / | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'user-agent': 'python-requests/2.34.2', 'accept-encoding': 'gzip, deflate, zstd', 'accept': '*/*', 'connection': 'keep-alive'}
+2026-06-24 21:37:19,866 - inspection_system.request - INFO - Response: GET / | Status: 200 | Time: 0.05s
+2026-06-24 21:37:39,571 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'accept': 'application/json, text/plain, */*', 'content-type': 'application/json', 'user-agent': 'axios/1.13.6', 'content-length': '79', 'accept-encoding': 'gzip, compress, deflate, br', 'host': 'localhost:8000', 'connection': 'keep-alive'}
+2026-06-24 21:37:39,583 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.01s
+2026-06-24 21:51:46,893 - watchfiles.main - INFO - 2 changes detected
+2026-06-24 21:51:47,256 - watchfiles.main - INFO - 1 change detected
+2026-06-24 21:52:16,564 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'host': 'localhost:8000', 'connection': 'close', 'content-length': '79', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0', 'accept': 'application/json, text/plain, */*', 'sec-ch-ua': '"Microsoft Edge";v="149", "Chromium";v="149", "Not)A;Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'origin': 'http://localhost:5177', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:5177/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6'}
+2026-06-24 21:52:16,631 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.07s
+2026-06-24 21:56:59,666 - inspection_system.request - INFO - Request: GET /api/system/status | IP: 127.0.0.1 | Headers: {'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'host': 'localhost:8000', 'connection': 'Keep-Alive'}
+2026-06-24 21:56:59,705 - inspection_system.request - INFO - Response: GET /api/system/status | Status: 401 | Time: 0.04s
+2026-06-24 21:57:06,110 - inspection_system.request - INFO - Request: GET /api/devices/stats | IP: 127.0.0.1 | Headers: {'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'host': 'localhost:8000', 'connection': 'Keep-Alive'}
+2026-06-24 21:57:06,113 - inspection_system.request - INFO - Response: GET /api/devices/stats | Status: 401 | Time: 0.00s
+2026-06-24 21:57:11,563 - inspection_system.request - INFO - Request: GET /api/devices | IP: 127.0.0.1 | Headers: {'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'host': 'localhost:8000', 'connection': 'Keep-Alive'}
+2026-06-24 21:57:11,565 - inspection_system.request - INFO - Response: GET /api/devices | Status: 401 | Time: 0.00s
+2026-06-24 21:57:24,020 - inspection_system.request - INFO - Request: POST /api/auth/login | IP: 127.0.0.1 | Headers: {'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'content-type': 'application/json', 'host': 'localhost:8000', 'content-length': '90', 'expect': '100-continue', 'connection': 'Keep-Alive'}
+2026-06-24 21:57:24,088 - inspection_system.request - INFO - Response: POST /api/auth/login | Status: 200 | Time: 0.07s
+2026-06-24 21:57:38,262 - inspection_system.request - INFO - Request: GET /api/devices/stats | IP: 127.0.0.1 | Headers: {'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYzU3NzlmZmRjZWM0OGIyOGY3YjZhYTE4N2RkNGYzMSIsImV4cCI6MTc4MjMxMTI0NH0.B6n42DpYNivgdL_9q9PjxVrZLzoirw6L-LjiR3Bqz6I', 'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'host': 'localhost:8000', 'connection': 'Keep-Alive'}
+2026-06-24 21:57:38,279 - inspection_system.request - INFO - Response: GET /api/devices/stats | Status: 200 | Time: 0.02s
+2026-06-24 21:57:44,424 - inspection_system.request - INFO - Request: GET /api/devices | IP: 127.0.0.1 | Headers: {'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYzU3NzlmZmRjZWM0OGIyOGY3YjZhYTE4N2RkNGYzMSIsImV4cCI6MTc4MjMxMTI0NH0.B6n42DpYNivgdL_9q9PjxVrZLzoirw6L-LjiR3Bqz6I', 'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'host': 'localhost:8000', 'connection': 'Keep-Alive'}
+2026-06-24 21:57:44,444 - inspection_system.request - INFO - Response: GET /api/devices | Status: 200 | Time: 0.02s
+2026-06-24 21:57:50,193 - inspection_system.request - INFO - Request: GET /api/alerts | IP: 127.0.0.1 | Headers: {'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYzU3NzlmZmRjZWM0OGIyOGY3YjZhYTE4N2RkNGYzMSIsImV4cCI6MTc4MjMxMTI0NH0.B6n42DpYNivgdL_9q9PjxVrZLzoirw6L-LjiR3Bqz6I', 'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'host': 'localhost:8000', 'connection': 'Keep-Alive'}
+2026-06-24 21:57:50,202 - inspection_system.request - INFO - Response: GET /api/alerts | Status: 200 | Time: 0.01s
+2026-06-24 21:57:56,097 - inspection_system.request - INFO - Request: GET /api/messages | IP: 127.0.0.1 | Headers: {'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYzU3NzlmZmRjZWM0OGIyOGY3YjZhYTE4N2RkNGYzMSIsImV4cCI6MTc4MjMxMTI0NH0.B6n42DpYNivgdL_9q9PjxVrZLzoirw6L-LjiR3Bqz6I', 'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'host': 'localhost:8000', 'connection': 'Keep-Alive'}
+2026-06-24 21:57:56,108 - inspection_system.request - INFO - Response: GET /api/messages | Status: 200 | Time: 0.01s
+2026-06-24 21:58:10,134 - inspection_system.request - INFO - Request: POST /api/devices | IP: 127.0.0.1 | Headers: {'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYzU3NzlmZmRjZWM0OGIyOGY3YjZhYTE4N2RkNGYzMSIsImV4cCI6MTc4MjMxMTI0NH0.B6n42DpYNivgdL_9q9PjxVrZLzoirw6L-LjiR3Bqz6I', 'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'content-type': 'application/json', 'host': 'localhost:8000', 'content-length': '128', 'expect': '100-continue', 'connection': 'Keep-Alive'}
+2026-06-24 21:58:10,173 - inspection_system.request - INFO - Response: POST /api/devices | Status: 200 | Time: 0.04s
+2026-06-24 21:58:15,811 - inspection_system.request - INFO - Request: GET /api/environment/latest | IP: 127.0.0.1 | Headers: {'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYzU3NzlmZmRjZWM0OGIyOGY3YjZhYTE4N2RkNGYzMSIsImV4cCI6MTc4MjMxMTI0NH0.B6n42DpYNivgdL_9q9PjxVrZLzoirw6L-LjiR3Bqz6I', 'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'host': 'localhost:8000', 'connection': 'Keep-Alive'}
+2026-06-24 21:58:15,824 - inspection_system.request - INFO - Response: GET /api/environment/latest | Status: 200 | Time: 0.01s
+2026-06-24 21:58:21,537 - inspection_system.request - INFO - Request: GET /api/users | IP: 127.0.0.1 | Headers: {'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYzU3NzlmZmRjZWM0OGIyOGY3YjZhYTE4N2RkNGYzMSIsImV4cCI6MTc4MjMxMTI0NH0.B6n42DpYNivgdL_9q9PjxVrZLzoirw6L-LjiR3Bqz6I', 'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.8655', 'host': 'localhost:8000', 'connection': 'Keep-Alive'}
+2026-06-24 21:58:21,546 - inspection_system.request - INFO - Response: GET /api/users | Status: 200 | Time: 0.01s
