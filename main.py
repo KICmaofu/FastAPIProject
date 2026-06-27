@@ -10,6 +10,7 @@ from app.routers.alarm_router import router as alarm_router
 from app.routers.report_router import router as report_router
 from app.routers.ai_router import router as ai_router
 from app.routers.sys_log_router import router as sys_log_router
+from app.routers.socket_router import router as socket_router
 import logging
 
 logging.basicConfig(
@@ -83,6 +84,21 @@ app.include_router(alarm_router)
 app.include_router(report_router)
 app.include_router(ai_router)
 app.include_router(sys_log_router)
+app.include_router(socket_router)
+
+@app.on_event("startup")
+async def startup_event():
+    logger.info("Starting Socket Server...")
+    from socket_server.socket_server import start_server, PORT
+    start_server(background=True)
+    logger.info(f"Socket Server started on port {PORT}")
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    logger.info("Shutting down Socket Server...")
+    from socket_server.socket_server import shutdown_server
+    shutdown_server()
+    logger.info("Socket Server shutdown complete")
 
 if __name__ == "__main__":
     import uvicorn

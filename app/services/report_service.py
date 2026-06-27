@@ -157,13 +157,22 @@ class ReportService:
             func.max(RobotSensorRecord.temperature).label("max_temp")
         ).first()
         
+        avg_temp = 0.0
+        avg_humidity = 0.0
+        max_temp = 0.0
+        
+        if sensor_result:
+            avg_temp = round(float(sensor_result.avg_temp), 2) if sensor_result.avg_temp else 0.0
+            avg_humidity = round(float(sensor_result.avg_humidity), 2) if sensor_result.avg_humidity else 0.0
+            max_temp = round(float(sensor_result.max_temp), 2) if sensor_result.max_temp else 0.0
+        
         return ApiResponse.success({
             "date": datetime.now().strftime("%Y-%m-%d"),
             "total_patrol": total_patrol,
             "completed_patrol": completed_patrol,
             "total_alarm": total_alarm,
             "processed_alarm": processed_alarm,
-            "avg_temperature": round(sensor_result.avg_temp, 2) if sensor_result.avg_temp else 0,
-            "avg_humidity": round(sensor_result.avg_humidity, 2) if sensor_result.avg_humidity else 0,
-            "max_temperature": round(sensor_result.max_temp, 2) if sensor_result.max_temp else 0
+            "avg_temperature": avg_temp,
+            "avg_humidity": avg_humidity,
+            "max_temperature": max_temp
         })

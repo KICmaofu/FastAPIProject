@@ -72,6 +72,24 @@ async def get_sensor_statistics(
 ):
     return RobotService.get_sensor_statistics(db, robot_sn, startTime, endTime)
 
+@router.get("/thermal/latest/{robot_sn}")
+async def get_thermal_matrix_latest(robot_sn: str = Path(...), db: Session = Depends(get_db), user = Depends(get_current_user)):
+    """获取最新热力图数据"""
+    return RobotService.get_thermal_matrix_latest(db, robot_sn)
+
+@router.get("/thermal/history")
+async def get_thermal_matrix_history(
+    robot_sn: str = Query(None),
+    page: int = Query(1, ge=1),
+    pageSize: int = Query(20, ge=1, le=100),
+    startTime: str = Query(None),
+    endTime: str = Query(None),
+    db: Session = Depends(get_db),
+    user = Depends(get_current_user)
+):
+    """获取热力图历史记录"""
+    return RobotService.get_thermal_matrix_history(db, robot_sn, page, pageSize, startTime, endTime)
+
 @router.get("/{id}")
 async def get_robot_detail(id: int = Path(..., gt=0), db: Session = Depends(get_db), user = Depends(get_current_user)):
     return RobotService.get_robot_detail(db, id)

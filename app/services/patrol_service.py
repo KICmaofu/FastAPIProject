@@ -41,7 +41,13 @@ class PatrolService:
         enabled = db.query(PatrolTask).filter(PatrolTask.status == 1).count()
         disabled = total - enabled
         
-        return ApiResponse.success({"total": total, "enabled": enabled, "disabled": disabled})
+        return ApiResponse.success({
+            "total": total,
+            "total_task": total,
+            "enabled": enabled,
+            "completed_task": enabled,
+            "disabled": disabled
+        })
     
     @staticmethod
     def add_task(db: Session, task_name: str, robot_sn: str, cycle_type: int, start_time: str, end_time: str, route_points: list = None, create_by: str = ""):
@@ -176,13 +182,18 @@ class PatrolService:
             func.sum(PatrolRecord.alarm_count).label("total_alarm_count")
         ).first()
         
+        total_data_count = int(result.total_data_count) if result and result.total_data_count else 0
+        total_alarm_count = int(result.total_alarm_count) if result and result.total_alarm_count else 0
+        
         return ApiResponse.success({
             "total": total,
+            "total_record": total,
             "ongoing": ongoing,
             "completed": completed,
+            "completed_record": completed,
             "interrupted": interrupted,
-            "total_data_count": result.total_data_count or 0,
-            "total_alarm_count": result.total_alarm_count or 0
+            "total_data_count": total_data_count,
+            "total_alarm_count": total_alarm_count
         })
     
     @staticmethod

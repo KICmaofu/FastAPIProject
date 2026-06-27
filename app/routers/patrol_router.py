@@ -52,10 +52,6 @@ async def get_record_list(
 ):
     return PatrolService.get_record_list(db, page, pageSize, robot_sn, startTime, endTime)
 
-@router.get("/record/{id}")
-async def get_record_detail(id: int = Path(..., gt=0), db: Session = Depends(get_db), user = Depends(get_current_user)):
-    return PatrolService.get_record_detail(db, id)
-
 @router.get("/record/statistics")
 async def get_record_statistics(
     startTime: str = Query(None),
@@ -64,6 +60,10 @@ async def get_record_statistics(
     user = Depends(get_current_user)
 ):
     return PatrolService.get_record_statistics(db, startTime, endTime)
+
+@router.get("/record/{id}")
+async def get_record_detail(id: int = Path(..., gt=0), db: Session = Depends(get_db), user = Depends(get_current_user)):
+    return PatrolService.get_record_detail(db, id)
 
 @router.post("/start")
 async def start_patrol(data: PatrolStart, db: Session = Depends(get_db), user = Depends(get_current_user)):

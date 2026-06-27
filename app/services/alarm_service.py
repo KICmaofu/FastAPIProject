@@ -105,11 +105,13 @@ class AlarmService:
         
         return ApiResponse.success({
             "total": total,
+            "total_alarm": total,
             "red": red,
             "orange": orange,
             "normal": normal,
             "pending": pending,
-            "dealt": dealt
+            "dealt": dealt,
+            "processed_alarm": dealt
         })
     
     @staticmethod

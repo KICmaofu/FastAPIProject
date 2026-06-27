@@ -3,6 +3,7 @@ from sqlalchemy import desc
 from app.models.ai import AiChatRecord
 from app.models.alarm import AlarmInfo
 from app.utils.response import ApiResponse
+from app.agent.agent import InspectionAgent
 from datetime import datetime
 
 class AiService:
@@ -12,7 +13,8 @@ class AiService:
         if not alarm:
             return ApiResponse.not_found("告警不存在")
         
-        analysis = f"【AI告警分析】\n告警ID: {alarm_id}\n告警类型: {alarm.alarm_type}\n告警等级: {alarm.alarm_level}\n告警描述: {alarm.alarm_desc}\n发生区域: {alarm.area_name}\n\n分析建议：根据告警级别，建议立即进行现场核查，确认是否存在火灾隐患。"
+        agent = InspectionAgent(db)
+        analysis = agent.analyze_alarm(alarm_id)
         
         chat_record = AiChatRecord(
             username=username,
@@ -29,7 +31,9 @@ class AiService:
     
     @staticmethod
     def chat(db: Session, message: str, relate_alarm_id: int = None, relate_robot_sn: str = None, username: str = ""):
-        answer = f"【AI智能回复】\n您的问题: {message}\n\nAI分析结果: 根据您的提问，系统已进行智能分析。这是一个模拟的AI回复，实际系统会调用DeepSeek大模型进行真实分析。"
+        agent = InspectionAgent(db)
+        session_id = f"{username}_{datetime.now().strftime('%Y%m%d')}"
+        answer = agent.chat(message, session_id)
         
         chat_record = AiChatRecord(
             username=username,
@@ -69,7 +73,8 @@ class AiService:
     
     @staticmethod
     def analyze_report(db: Session, robot_sn: str = None, start_time: str = None, end_time: str = None, username: str = ""):
-        analysis = f"【AI报表分析】\n机器人: {robot_sn or '全部'}\n时间范围: {start_time or '开始'} ~ {end_time or '结束'}\n\n分析结果: 系统已完成数据分析，当前环境监测数据整体处于正常范围。建议继续保持定期巡检，关注高温区域变化。"
+        agent = InspectionAgent(db)
+        analysis = agent.analyze_report(robot_sn, start_time, end_time)
         
         chat_record = AiChatRecord(
             username=username,

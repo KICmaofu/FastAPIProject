@@ -251,10 +251,70 @@ class RobotService:
             func.max(RobotSensorRecord.max_single_temp).label("max_temp")
         ).first()
         
+        if result is None:
+            return ApiResponse.success({
+                "total": 0,
+                "avg_temperature": 0.0,
+                "avg_humidity": 0.0,
+                "avg_smoke_level": 0.0,
+                "max_temperature": 0.0
+            })
+        
+        avg_temp = float(result.avg_temp) if result.avg_temp else 0.0
+        avg_humidity = float(result.avg_humidity) if result.avg_humidity else 0.0
+        avg_smoke = float(result.avg_smoke) if result.avg_smoke else 0.0
+        max_temp = float(result.max_temp) if result.max_temp else 0.0
+        
         return ApiResponse.success({
             "total": result.total or 0,
-            "avg_temperature": round(result.avg_temp, 2) if result.avg_temp else 0,
-            "avg_humidity": round(result.avg_humidity, 2) if result.avg_humidity else 0,
-            "avg_smoke_level": round(result.avg_smoke, 2) if result.avg_smoke else 0,
-            "max_temperature": round(result.max_temp, 2) if result.max_temp else 0
+            "avg_temperature": round(avg_temp, 2),
+            "avg_humidity": round(avg_humidity, 2),
+            "avg_smoke_level": round(avg_smoke, 2),
+            "max_temperature": round(max_temp, 2)
         })
+    
+    @staticmethod
+    def get_thermal_matrix_latest(db: Session, robot_sn: str):
+        """获取最新热力图数据"""
+        record = db.query(RobotSensorRecord).filter(
+            RobotSensorRecord.robot_sn == robot_sn
+        ).order_by(desc(RobotSensorRecord.collect_time)).first()
+        
+        if not record:
+            return ApiResponse.not_found("暂无热力图数据")
+        
+        return ApiResponse.success({
+            "robot_sn": record.robot_sn,
+            "thermal_matrix": record.thermal_matrix,
+            "max_single_temp": record.max_single_temp,
+            "collect_time": record.collect_time.strftime("%Y-%m-%d %H:%M:%S") if record.collect_time else None
+        })
+    
+    @staticmethod
+    def get_thermal_matrix_history(db: Session, robot_sn: str = None, page: int = 1, page_size: int = 20, start_time: str = None, end_time: str = None):
+        """获取热力图历史记录"""
+        query = db.query(RobotSensorRecord).filter(
+            RobotSensorRecord.thermal_matrix.isnot(None),
+            RobotSensorRecord.thermal_matrix != ''
+        )
+        
+        if robot_sn:
+            query = query.filter(RobotSensorRecord.robot_sn == robot_sn)
+        if start_time:
+            query = query.filter(RobotSensorRecord.collect_time >= start_time)
+        if end_time:
+            query = query.filter(RobotSensorRecord.collect_time <= end_time)
+        
+        total = query.count()
+        records = query.order_by(desc(RobotSensorRecord.collect_time)).offset((page - 1) * page_size).limit(page_size).all()
+        
+        result_list = []
+        for record in records:
+            result_list.append({
+                "robot_sn": record.robot_sn,
+                "thermal_matrix": record.thermal_matrix,
+                "max_single_temp": record.max_single_temp,
+                "collect_time": record.collect_time.strftime("%Y-%m-%d %H:%M:%S") if record.collect_time else None
+            })
+        
+        return ApiResponse.success_pagination(result_list, total, page, page_size)

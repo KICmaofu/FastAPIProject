@@ -32,6 +32,13 @@ class Settings(BaseSettings):
     CORS_ALLOW_METHODS: list = ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"]
     CORS_ALLOW_HEADERS: list = ["*"]
     
+    # LLM配置
+    DEEPSEEK_API_KEY: Optional[str] = None
+    DEEPSEEK_BASE_URL: str = "https://api.deepseek.com"
+    DEEPSEEK_MODEL: str = "deepseek-chat"
+    LLM_MAX_TOKENS: int = 4096
+    LLM_TEMPERATURE: float = 0.7
+    
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 settings = Settings()
